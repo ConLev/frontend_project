@@ -1,0 +1,20 @@
+{
+  "name": "frontend_project",
+  "homepage": "https://github.com/ConLev/frontend_project",
+  "authors": [
+    "ConLev <levconst@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-ui": "^1.12.1"
+  }
+}

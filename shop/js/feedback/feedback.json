@@ -1,0 +1,8 @@
+{
+  "maxID": 3,
+  "comments": [
+          {"id": "1", "author": "Anna", "text": "some text", "approved": true},
+          {"id": "2", "author": "Tom", "text": "some text", "approved": true},
+          {"id": "3", "author": "John", "text": "some text", "approved": false}
+  ]
+}
