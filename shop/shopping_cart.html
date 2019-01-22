@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <!--suppress XmlDuplicatedId -->
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>SHOPPING CART</title>
@@ -10,7 +9,6 @@
           integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="style/style.css">
 </head>
-
 <body>
 <header class="header">
     <div class="container header-flex">
@@ -160,161 +158,50 @@
         <h3 class="bread-crumb-header">New Arrivals</h3>
         <div class="bread-crumb-link">
             <ul>
-                <li><a class="bread-crumb-other" href="index.html"> Home /</a><a class="bread-crumb-other" href="#"> Man
-                    /</a><a class="bread-crumb-head" href="#"> New Arrivals </a></li>
+                <li><a class="bread-crumb-other" href="index.html"> Home /</a>
+                    <a class="bread-crumb-other" href="product.html"> Man /</a>
+                    <a class="bread-crumb-head" href="#"> New Arrivals </a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
-<div class="shopping-cart container">
-    <div class="shopping-cart-header">
-        <span>Product Details</span>
-        <span class="unite-price-header">unite Price</span>
-        <span class="quantity-header">Quantity</span>
-        <span class="shipping-header">shipping</span>
-        <span class="subtotal-header">Subtotal</span>
-        <span class="action-header">ACTION</span>
-    </div>
-    <form class="shopping-cart-product" method="post" action="#">
-        <div class="cart-product-details">
-            <img src="img/shopping-cart-product_1.jpg" alt="product photo">
-            <div class="product-details-box_parameter">
-                <a class="product-details-link" href="#">Mango People T-shirt</a>
-                <div class="box-details-comment">
-                    <span class="product-details-comment">&#9734;&#9734;&#9734;&#9734;&#9734;</span>
+<div class="shopping-cart_container">
+    <div class="shopping-cart_wrapper container"></div>
+    <div class="form-cart container">
+        <form class="form-shipping-adress" method="post" action="#">
+            <legend id="shipping-adress">Shipping Adress</legend>
+            <details class="shipping-box">
+                <summary class="shipping-details">Bangladesh</summary>
+                <summary class="shipping-details">New York</summary>
+                <summary class="shipping-details">London</summary>
+                <summary class="shipping-details">Paris</summary>
+            </details>
+            <input type="text" id="shipping-state" placeholder="State">
+            <input type="number" id="zip" min="0" placeholder="Postcode / Zip">
+            <input type="submit" id="get-a-quote" value="get a quote">
+        </form>
+        <form class="form-coupon-discount" method="post" action="#">
+            <legend id="coupon-discount">coupon discount</legend>
+            <label class="label-discount" for="discount">Enter your coupon code if you have one</label>
+            <input type="text" id="discount" placeholder="Coupon discount">
+            <input type="submit" id="submit-discount" value="Apply coupon">
+        </form>
+        <div>
+            <div class="proceed-checkout">
+                <div class="proceed-checkout-text">
+                    <div class="sub-total">
+                        <span class="sub-total-parameter">Sub total</span>
+                        <span class="sub-total-value"></span>
+                    </div>
+                    <div class="grand-total">
+                        <span class="grand-total-parameter">GRAND TOTAL</span>
+                        <span class="grand-total-value"></span>
+                    </div>
                 </div>
-                <div class="product-details-color">
-                    <span class="product-details-parameter">Color:</span>
-                    <span class="product-details-value">Red</span>
+                <div class="submit-checkout-box">
+                    <a class="submit-checkout-box-link" href="checkout.html">proceed to checkout</a>
                 </div>
-                <div class="product-details-size">
-                    <span class="product-details-parameter">Size:</span>
-                    <span class="product-details-value">Xll</span>
-                </div>
-            </div>
-            <div class="cart-product-price">
-                <span class="cart-product-value_text">$150</span>
-            </div>
-            <label class="cart-product-quantity">
-                <input class="cart-quantity-value" type="number" min="1">
-            </label>
-            <div class="cart-product-shipping">
-                <span class="cart-product-value_text">FREE</span>
-            </div>
-            <div class="cart-product-subtotal">
-                <span class="cart-product-value_text">$300</span>
-            </div>
-            <div class="cart-product-action">
-                <input class="cart-product-action_link" type="reset" value="&#8853;">
-            </div>
-        </div>
-    </form>
-    <form class="shopping-cart-product" method="post" action="#">
-        <div class="cart-product-details">
-            <img src="img/shopping-cart-product_2.jpg" alt="product photo">
-            <div class="product-details-box_parameter">
-                <a class="product-details-link" href="#">Mango People T-shirt</a>
-                <div class="box-details-comment">
-                    <span class="product-details-comment">&#9734;&#9734;&#9734;&#9734;&#9734;</span>
-                </div>
-                <div class="product-details-color">
-                    <span class="product-details-parameter">Color:</span>
-                    <span class="product-details-value">Red</span>
-                </div>
-                <div class="product-details-size">
-                    <span class="product-details-parameter">Size:</span>
-                    <span class="product-details-value">Xll</span>
-                </div>
-            </div>
-            <div class="cart-product-price">
-                <span class="cart-product-value_text">$150</span>
-            </div>
-            <label class="cart-product-quantity">
-                <input class="cart-quantity-value" type="number" min="1">
-            </label>
-            <div class="cart-product-shipping">
-                <span class="cart-product-value_text">FREE</span>
-            </div>
-            <div class="cart-product-subtotal">
-                <span class="cart-product-value_text">$300</span>
-            </div>
-            <div class="cart-product-action">
-                <input class="cart-product-action_link" type="reset" value="&#8853;">
-            </div>
-        </div>
-    </form>
-    <form class="shopping-cart-product" method="post" action="#">
-        <div class="cart-product-details">
-            <img src="img/shopping-cart-product_3.jpg" alt="product photo">
-            <div class="product-details-box_parameter">
-                <a class="product-details-link" href="#">Mango People T-shirt</a>
-                <div class="box-details-comment">
-                    <span class="product-details-comment">&#9734;&#9734;&#9734;&#9734;&#9734;</span>
-                </div>
-                <div class="product-details-color">
-                    <span class="product-details-parameter">Color:</span>
-                    <span class="product-details-value">Red</span>
-                </div>
-                <div class="product-details-size">
-                    <span class="product-details-parameter">Size:</span>
-                    <span class="product-details-value">Xll</span>
-                </div>
-            </div>
-            <div class="cart-product-price">
-                <span class="cart-product-value_text">$150</span>
-            </div>
-            <label class="cart-product-quantity">
-                <input class="cart-quantity-value" type="number" min="1">
-            </label>
-            <div class="cart-product-shipping">
-                <span class="cart-product-value_text">FREE</span>
-            </div>
-            <div class="cart-product-subtotal">
-                <span class="cart-product-value_text">$300</span>
-            </div>
-            <div class="cart-product-action">
-                <input class="cart-product-action_link" type="reset" value="&#8853;">
-            </div>
-        </div>
-    </form>
-    <div class="shopping-cart-button">
-        <input type="button" id="shopping-cart-button" value="CLEAR SHOPPING CART">
-        <input type="button" id="shopping-cart-button" value="CONTINUE SHOPPING">
-    </div>
-</div>
-<div class="form-cart container">
-    <form class="form-shipping-adress" action="#">
-        <legend id="shipping-adress">Shipping Adress</legend>
-        <details class="shipping-box">
-            <summary class="shipping-details">Bangladesh</summary>
-            <summary class="shipping-details">New York</summary>
-            <summary class="shipping-details">London</summary>
-            <summary class="shipping-details">Paris</summary>
-        </details>
-        <input type="text" id="shipping-state" placeholder="State">
-        <input type="number" id="zip" min="0" placeholder="Postcode / Zip">
-        <input type="submit" id="get-a-quote" value="get a quote">
-    </form>
-    <form class="form-coupon-discount" action="#">
-        <legend id="coupon-discount">coupon discount</legend>
-        <label class="label-discount" for="discount">Enter your coupon code if you have one</label>
-        <input type="text" id="discount" placeholder="Coupon discount">
-        <input type="submit" id="submit-discount" value="Apply coupon">
-    </form>
-    <div>
-        <div class="proceed-checkout">
-            <div class="proceed-checkout-text">
-                <div class="sub-total">
-                    <span class="sub-total-parameter">Sub total</span>
-                    <span class="sub-total-value">$900</span>
-                </div>
-                <div class="grand-total">
-                    <span class="grand-total-parameter">GRAND TOTAL</span>
-                    <span class="grand-total-value">$900</span>
-                </div>
-            </div>
-            <div class="submit-checkout-box">
-                <a class="submit-checkout-box-link" href="checkout.html">proceed to checkout</a>
             </div>
         </div>
     </div>
@@ -407,6 +294,13 @@
         </div>
     </div>
 </div>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="js/cart/Cart.js"></script>
+<script>
+    $(document).ready(() => {
+        // noinspection JSUnusedLocalSymbols
+        let cart = new Cart('js/cart/getCart.json', '.shopping-cart_wrapper');
+    });
+</script>
 </body>
-
 </html>
