@@ -1,7 +1,8 @@
 class Cart {
-    constructor(source, container = '.cart') {
+    constructor(source, container) {
         this.source = source;
         this.container = container;
+        this.cartId = 0; // Идентификатор корзины
         this.countGoods = 0; // Общее кол-во товаров в корзине
         this.amount = 0; // Общая стоимость товаров в корзине
         this.cartItems = []; // Все товары
@@ -13,10 +14,11 @@ class Cart {
         fetch(this.source)
             .then(result => result.json())
             .then(data => {
-                for (let product of data.contents) {
+                for (let product of data.items) {
                     this.cartItems.push(product);
                     this._renderItem(product);
                 }
+                this.cartId = data.cartId;
                 this.countGoods = data.countGoods;
                 this.amount = data.amount;
                 this._renderSum();
@@ -24,28 +26,74 @@ class Cart {
     }
 
     _render() {
-        let $cartItemsDiv = $('<div/>', {
-            class: 'cart-items-wrap'
+        let $productsBox = $('<div/>', {
+            class: 'products-box'
         });
-        let $totalGoods = $('<div/>', {
-            class: 'cart-summary sum-goods'
+        let $shoppingCartHeader = $('<div/>', {
+            class: 'products-box-header'
         });
-        let $totalPrice = $('<div/>', {
-            class: 'cart-summary sum-price'
+        $shoppingCartHeader.append($(`<span>Product Details</span>`));
+        $shoppingCartHeader.append($(`<span class="unite-price-header">unite Price</span>`));
+        $shoppingCartHeader.append($(`<span class="quantity-header">Quantity</span>`));
+        $shoppingCartHeader.append($(`<span class="shipping-header">shipping</span>`));
+        $shoppingCartHeader.append($(`<span class="subtotal-header">Subtotal</span>`));
+        $shoppingCartHeader.append($(`<span class="action-header">ACTION</span>`));
+        let $shoppingCartButton = $('<div/>', {
+            class: "shopping-cart-button container"
         });
-        $(this.container).text('Корзина');
-        $cartItemsDiv.appendTo($(this.container));
-        $totalGoods.appendTo($(this.container));
-        $totalPrice.appendTo($(this.container));
+        let $remBtn = $(`<button class="shopping-cart-button_clear">CLEAR SHOPPING CART</button>`);
+        $remBtn.click(() => {
+            this.cartItems = [];
+            $('.shopping-cart_container').empty();
+        });
+        $shoppingCartButton.append($remBtn);
+        $shoppingCartButton.append($(`<button class="shopping-cart-button_continue">CONTINUE SHOPPING</button>`));
+        $shoppingCartHeader.appendTo($productsBox);
+        $productsBox.appendTo($(this.container));
+        $shoppingCartButton.appendTo($(this.container));
     }
 
     _renderItem(product) {
         let $container = $('<div/>', {
-            class: 'cart-item',
+            class: 'product-box-details',
             'data-product': product.id_product
         });
-        $container.append($(`<p class="product-name">${product.product_name}</p>`));
-        let $quantity = $(`<input class="quantity" type="number" min="1"</input>`);
+        // noinspection JSUnresolvedVariable
+        $container.append($(`<img src="${product.product_img}" alt="product_photo">`));
+        let $detailsBox = $(`<div/>`, {
+            class: 'product-details-box_parameter'
+        });
+        $detailsBox.append($(`<a class="product-details-link" href="#">${product.product_name}</a>`));
+        let $comment = $(`<div/>`, {
+            class: 'box-details-comment'
+        });
+        // noinspection JSUnresolvedVariable
+        $comment.append($(`<span class="product-details-comment">${product.product_rating}</span>`));
+        $detailsBox.append($comment);
+        let $color = $(`<div/>`, {
+            class: 'product-details-color'
+        });
+        $color.append($(`<span class="product-details-parameter">Color:</span>`));
+        // noinspection JSUnresolvedVariable
+        $color.append($(`<span class="product-details-value">${product.product_color}</span>`));
+        $detailsBox.append($color);
+        let $size = $(`<div/>`, {
+            class: 'product-details-size'
+        });
+        $size.append($(`<span class="product-details-parameter">Size:</span>`));
+        // noinspection JSUnresolvedVariable
+        $size.append($(`<span class="product-details-value">${product.product_size}</span>`));
+        $detailsBox.append($size);
+        $container.append($detailsBox);
+        let $price = $(`<div/>`, {
+            class: 'cart-product-price'
+        });
+        $price.append($(`<span class="cart-product-value_text">$${product.price}</span>`));
+        $container.append($price);
+        let $quantityBox = $(`<label/>`, {
+            class: 'cart-product-quantity'
+        });
+        let $quantity = $(`<input class="cart-quantity-value" type="number" min="1"</input>`);
         $quantity.val(+product.quantity);
         $quantity.on('keydown paste', e => {
             e.preventDefault();
@@ -53,48 +101,40 @@ class Cart {
         $quantity.click(() => {
             this._updateQuantity(product.id_product, $quantity.val())
         });
-        $container.append($quantity);
-        $container.append($(`<p class="product-price">${product.price} руб.</p>`));
-        let $remBtn = $(`<button class="remBtn">&otimes;</button>`);
+        $quantityBox.append($quantity);
+        $container.append($quantityBox);
+        let $shipping = $(`<div/>`, {
+            class: `cart-product-shipping`
+        });
+        // noinspection JSUnresolvedVariable
+        $shipping.append($(`<span class="cart-product-value_text">${product.product_shipping}</span>`));
+        $container.append($shipping);
+        let $subtotal = $(`<div/>`, {
+            class: 'cart-product-subtotal'
+        });
+        $subtotal.append($(`<span class="cart-product-subtotal_value">$${product.price * product.quantity}</span>`));
+        $container.append($subtotal);
+        let $action = $(`<div/>`, {
+            class: 'cart-product-action'
+        });
+        let $remBtn = $(`<button class="cart-product-remBtn">&otimes;</button>`);
         $remBtn.click(() => {
             this._remove(product.id_product)
         });
-        $container.append($remBtn);
-        $container.appendTo($('.cart-items-wrap'));
+        $action.append($remBtn);
+        $container.append($action);
+        $container.appendTo($('.products-box'));
     }
 
     _renderSum() {
-        $('.sum-goods').text(`Всего товаров в корзине: ${this.countGoods}`);
-        $('.sum-price').text(`Общая сумма: ${this.amount} руб.`);
+        $('.sub-total-value').text(`$${this.amount}`);
+        $('.grand-total-value').text(`$${this.amount}`);
     }
 
+    // noinspection JSMethodCanBeStatic
     _updateCart(product) {
         let $container = $(`div[data-product="${product.id_product}"]`);
-        $container.find('.quantity').val(product.quantity);
-        $container.find('.product-price').text(`${product.quantity * product.price} руб.`);
-    }
-
-    addProduct(element) {
-        let productId = +$(element).data('id');
-        let find = this.cartItems.find(product => product.id_product === productId);
-        if (find) {
-            find.quantity++;
-            this.countGoods++;
-            this.amount += find.price;
-            this._updateCart(find);
-        } else {
-            let product = {
-                id_product: productId,
-                product_name: $(element).data('name'),
-                price: +$(element).data('price'),
-                quantity: 1
-            };
-            this.cartItems.push(product);
-            this._renderItem(product);
-            this.amount += product.price;
-            this.countGoods += product.quantity;
-        }
-        this._renderSum();
+        $container.find('.cart-product-subtotal_value').text(`$${product.price * product.quantity}`);
     }
 
     _updateQuantity(id, quantity) {

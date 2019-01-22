@@ -932,10 +932,10 @@ details[open]
   font-weight: 700
   text-transform: uppercase
 
-.shopping-cart
+.shopping-cart_container
   margin-top: 90px
 
-.shopping-cart-header
+.products-box-header
   color: #222222
   font-size: 13px
   font-weight: 700
@@ -944,30 +944,33 @@ details[open]
   letter-spacing: -0.2px
   padding-bottom: 20px
   border-bottom: 1px solid #eaeaea
+  display: grid
+  grid-template-columns: 4fr 1fr 1fr 1fr 1fr 1fr
+  grid-template-rows: 1fr
 
 .unite-price-header
-  padding-left: 410px
+  text-align: right
 
 .quantity-header
-  padding-left: 83px
+  text-align: right
 
 .shipping-header
-  padding-left: 63px
+  text-align: right
 
 .subtotal-header
-  padding-left: 83px
+  text-align: right
 
 .action-header
-  padding-left: 49px
+  text-align: right
 
-.cart-product-details
+.product-box-details
   padding: 25px 0
-  display: flex
+  display: grid
+  grid-template-columns: 1fr 4fr 1fr 1fr 1fr 1fr 1fr
   border-bottom: 1px solid #eaeaea
 
 .product-details-box_parameter
   margin: 12px 0 0 20px
-  display: inline-table
 
 .product-details-link
   color: #222222
@@ -1002,7 +1005,7 @@ details[open]
   line-height: 20px
 
 .cart-product-price
-  margin: 57px 0 0 275px
+  margin: 57px 0 0 8px
 
 .cart-product-value_text
   color: #656565
@@ -1011,8 +1014,15 @@ details[open]
   line-height: 20px
   text-transform: uppercase
 
+.cart-product-subtotal_value
+  color: #656565
+  font-size: 13px
+  font-weight: 400
+  line-height: 20px
+  text-transform: uppercase
+
 .cart-product-quantity
-  margin: 50px 0 0 115px
+  margin: 50px 0 0 15px
 
 .cart-quantity-value
   width: 54px
@@ -1021,15 +1031,18 @@ details[open]
   color: #656565
 
 .cart-product-shipping
-  margin: 57px 0 0 84px
+  margin-top: 57px
+  text-align: center
 
 .cart-product-subtotal
-  margin: 57px 0 0 116px
+  margin: 57px 0 0 21px
+  text-align: center
 
 .cart-product-action
-  margin: 57px 0 0 85px
+  margin: 57px 0 0 60px
+  text-align: center
 
-.cart-product-action_link
+.cart-product-remBtn
   color: #c0c0c0
   font-size: 18px
   font-weight: 400
@@ -1046,7 +1059,7 @@ details[open]
   display: flex
   justify-content: space-between
 
-#shopping-cart-button
+.shopping-cart-button_clear, .shopping-cart-button_continue
   border: 1px solid #eaeaea
   background-color: #ffffff
   color: #4a4a4a
@@ -1468,6 +1481,7 @@ details[open]
         margin-top: 40px
         padding: 10px 0
         background-color: #f3f3f3
+
         &-header
           padding: 10px
           margin-left: 10px
@@ -1476,6 +1490,7 @@ details[open]
           color: #6f6e6e
           font-size: 14px
           font-weight: 400
+
         &-summary
           padding: 10px
           border: 1px solid #ebebeb
@@ -1484,14 +1499,17 @@ details[open]
           color: #6f6e6e
           font-size: 14px
           font-weight: 400
+
           &:hover
             background-color: #ef5b70
             color: #ffffff
 
   &-drop
     flex-grow: 1
+
     &-details
       padding-bottom: 20px
+
     &-summary
       border-left: 5px solid #ef5b70
       border-bottom: 1px solid #ebebeb
@@ -1502,16 +1520,20 @@ details[open]
       text-transform: uppercase
       padding-left: 12px
       width: 240px
+
       &:hover
         color: #ef5b70
+
     &-box_link
       padding: 20px 0 0 20px
+
     &-link
       color: #6f6e6e
       font-size: 14px
       font-weight: 400
       line-height: 33px
       display: block
+
       &:hover
         color: #ef5b70
 
@@ -1538,6 +1560,7 @@ details[open]
   color: #ffffff
   font-weight: 700
   line-height: 39px
+
   &:hover
     box-shadow: 0 0 8px #fff
 
@@ -1550,8 +1573,10 @@ details[open]
   color: #ffffff
   font-weight: 700
   line-height: 39px
+
   &:first-child
     margin-right: 8px
+
   &:hover
     box-shadow: 0 0 8px #fff
 
@@ -1567,19 +1592,24 @@ details[open]
 
 .product-feature_box
   display: flex
+
   &-content
     padding: 90px 80px 110px 0
+
     &:last-of-type
       padding-right: 0
+
   &-img
     text-align: center
     padding-bottom: 30px
+
   &-text_top
     color: #fbfbfb
     font-size: 20px
     font-weight: 700
     letter-spacing: 0.5px
     text-align: center
+
   &-text_bottom
     color: #fbfbfb
     font-size: 14px
