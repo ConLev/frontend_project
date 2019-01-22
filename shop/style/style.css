@@ -1378,7 +1378,7 @@ details[open] .browse-box {
 }
 
 .sub-total {
-  padding-left: 150px;
+  padding-left: 170px;
 }
 .sub-total-parameter {
   color: #4a4a4a;
@@ -1395,7 +1395,7 @@ details[open] .browse-box {
 }
 
 .grand-total {
-  padding: 15px 0 0 86px;
+  padding: 15px 0 0 110px;
 }
 .grand-total-parameter {
   color: #222222;
