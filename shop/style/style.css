@@ -1370,6 +1370,7 @@ details[open] .browse-box {
 }
 
 .proceed-checkout {
+  width: 275px;
   background-color: #f5f3f3;
   padding: 40px;
 }
@@ -1378,7 +1379,7 @@ details[open] .browse-box {
 }
 
 .sub-total {
-  padding-left: 170px;
+  text-align: right;
 }
 .sub-total-parameter {
   color: #4a4a4a;
@@ -1395,7 +1396,8 @@ details[open] .browse-box {
 }
 
 .grand-total {
-  padding: 15px 0 0 110px;
+  padding-top: 15px;
+  text-align: right;
 }
 .grand-total-parameter {
   color: #222222;

@@ -30,6 +30,7 @@ a
 .header-left
   display: flex
   align-items: center
+
   &-summary
     border-radius: 3px 0 0 3px
     border: 1px solid #e6e6e6
@@ -41,9 +42,11 @@ a
     font-weight: 300
     letter-spacing: 0.35px
     margin-left: 35px
+
     &:hover
       background-color: #f16d7f
       color: #ffffff
+
   &-details
     position: relative
 
@@ -55,6 +58,7 @@ a
   font-weight: 300
   text-decoration: none
   text-transform: uppercase
+
   &:hover
     filter: opacity(50%)
 
@@ -70,8 +74,10 @@ a
 
 summary
   position: relative
+
   &::-webkit-details-marker
     display: none
+
   &::after
     content: '\25B6'
     padding-left: 0.5em
@@ -79,6 +85,7 @@ summary
 details[open]
   > summary::after
     content: '\25BC'
+
   .browse-box
     display: block
 
@@ -93,6 +100,7 @@ details[open]
   left: 30px
   display: none
   z-index: 1
+
   &:before
     content: ""
     display: block
@@ -113,6 +121,7 @@ details[open]
   line-height: 28px
   letter-spacing: 0.35px
   padding-left: 5px
+
   &:hover
     color: #f16d7f
 
@@ -135,6 +144,7 @@ details[open]
   border-left: none
   font-size: 14px
   color: #a4a4a4
+
   &:hover
     background-color: #f16d7f
     color: #ffffff
@@ -157,6 +167,7 @@ details[open]
   display: none
   flex-wrap: wrap
   z-index: 1
+
   &:before
     content: ""
     display: block
@@ -174,6 +185,7 @@ details[open]
   display: flex
   border-bottom: 1px solid #ededed
   margin-top: 20px
+
   &:first-of-type
     margin-top: 0
 
@@ -182,11 +194,13 @@ details[open]
 
 .cart-drop-text
   padding-left: 15px
+
   &-top
     color: #222222
     font-size: 12px
     font-weight: 700
     text-transform: uppercase
+
     &:hover
       color: #f16d7f
 
@@ -195,6 +209,7 @@ details[open]
     font-size: 12px
     font-weight: 400
     padding: 10px 0
+
   &-bottom
     color: #f16d7f
     font-size: 12px
@@ -208,6 +223,7 @@ details[open]
   background-color: #ffffff
   margin: 35px 0 0 75px
   padding: 0 5px
+
   &:hover
     color: #ffffff
     background-color: #f16d7f
@@ -224,8 +240,10 @@ details[open]
   display: block
   margin: 32px 0 10px 0
   padding: 20px 0
+
   &:last-of-type
     margin-top: 0
+
   &:hover
     border: 1px solid #f16d7f
     color: #f16d7f
@@ -243,12 +261,15 @@ details[open]
   &-link
     font-size: 32px
     color: #222222
+
     &:hover
       color: #f16d7f
+
   &-list
     padding: 10px
     margin-right: 15px
     position: relative
+
     &:hover .cart-drop-box
       display: flex
 
@@ -263,6 +284,7 @@ details[open]
   color: #222224
   font-weight: 400
   letter-spacing: 0.38px
+
   &:hover
     background-color: #f16d7f
     color: #ffffff
@@ -279,6 +301,7 @@ details[open]
   padding: 0 20px 0 20px
   background-color: #cdcdcc
   color: #222222
+
   &:hover
     background-color: #f16d7f
     color: #ffffff
@@ -291,6 +314,7 @@ details[open]
 
 .menu-list
   position: relative
+
   &:hover
     .drop-box
       display: flex
@@ -304,6 +328,7 @@ details[open]
   font-weight: 700
   text-decoration: none
   text-transform: uppercase
+
   &:hover
     color: #ef5b70
 
@@ -318,6 +343,7 @@ details[open]
   left: -5px
   display: none
   z-index: 1
+
   &:before
     content: ""
     display: block
@@ -333,6 +359,7 @@ details[open]
 
 .drop-flex
   margin-right: 45px
+
   &:last-of-type
     margin-right: 0
 
@@ -356,6 +383,7 @@ details[open]
   font-weight: 400
   line-height: 28px
   letter-spacing: 0.35px
+
   &:hover
     color: #f16d7f
 
@@ -420,6 +448,7 @@ details[open]
   background-color: white
   display: inline-block
   margin-top: 25px
+
   &-top
     color: #222222
     font-size: 18px
@@ -428,6 +457,7 @@ details[open]
     letter-spacing: 0.45px
     display: inline-block
     padding: 15px 20px 5px 20px
+
   &-bottom
     color: #f16d7f
     font-size: 30px
@@ -485,9 +515,11 @@ details[open]
   width: 263px
   position: relative
   margin-bottom: 39px
+
   &:hover
     .parent-add
       display: flex
+
     img
       filter: brightness(50%)
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.16)
@@ -517,6 +549,7 @@ details[open]
   font-weight: 700
   text-decoration: none
   line-height: 39px
+
   &:hover
     box-shadow: 0 0 8px #fff
 
@@ -593,38 +626,47 @@ details[open]
 
 .subscribe
   display: flex
+
   &-left
     border-right: 1px solid #ffffff
     display: flex
+
   &-user
     height: 83px
     padding: 110px 28px 0 0
+
   &-user_text
     padding: 115px 72px 0 0
     width: 406px
+
     &-top
       color: #222224
       font-size: 16px
       font-style: italic
       line-height: 26px
       letter-spacing: 0.4px
+
     &-middle
       color: #f16d7f
       font-size: 16px
       font-weight: 700
       letter-spacing: 0.4px
       line-height: 26px
+
     &-bottom
       color: #222224
       font-size: 12px
       font-weight: 300
       letter-spacing: 0.3px
       line-height: 14px
+
   &-right
     height: 438px
     padding-left: 92px
+
     &-text
       padding: 148px 0 35px 0
+
       &-top
         color: #222224
         font-size: 24px
@@ -633,6 +675,7 @@ details[open]
         line-height: 54px
         text-transform: uppercase
         text-align: center
+
       &-bottom
         color: #222224
         font-size: 14px
@@ -652,6 +695,7 @@ details[open]
   font-size: 14px
   font-weight: 400
   letter-spacing: 0.35px
+
   &:hover
     opacity: 0.67
 
@@ -665,6 +709,7 @@ details[open]
   font-weight: 400
   line-height: 46px
   letter-spacing: 0.35px
+
   &:hover
     background-color: #f16d7f
     border: 1px solid #f16d7f
@@ -674,6 +719,7 @@ details[open]
   display: flex
   justify-content: space-between
   margin: 100px 0 90px 0
+
   &-logo_text
     width: 427px
     color: #898989
@@ -682,6 +728,7 @@ details[open]
     line-height: 24px
     letter-spacing: 0.35px
     padding-top: 20px
+
   &-nav_head
     color: #f16d7f
     font-size: 18px
@@ -690,12 +737,14 @@ details[open]
     text-transform: uppercase
     letter-spacing: 0.45px
     padding-bottom: 20px
+
   &-nav_link
     color: #898989
     font-size: 16px
     font-weight: 400
     line-height: 42px
     letter-spacing: 0.4px
+
     &:hover
       color: #ef5b70
 
@@ -704,15 +753,18 @@ details[open]
   background-color: #e6e6e6
   display: flex
   justify-content: space-between
+
   &-copyright
     color: #7a7a7a
     font-size: 16px
     font-weight: 400
     line-height: 79px
     letter-spacing: 0.4px
+
   &-social
     padding-top: 23px
     display: flex
+
   &-social_link
     width: 32px
     height: 32px
@@ -722,8 +774,10 @@ details[open]
     line-height: 32px
     color: #b2b2b2
     margin-right: 8px
+
     &:last-of-type
       margin-right: 0
+
     &:hover
       background-color: #f16d7f
       color: #ffffff
@@ -847,6 +901,7 @@ details[open]
   width: 130px
   height: 35px
   border: 1px solid #eaeaea
+
   &-summary
     color: #bcbcbc
     font-size: 13px
@@ -872,6 +927,7 @@ details[open]
   background-color: #ffffff
   color: #bcbcbc
   margin: 28px 0 122px 302px
+
   &:hover
     color: #ef5b70
     border: 1px solid #ef5b70
@@ -977,6 +1033,7 @@ details[open]
   font-size: 13px
   font-weight: 400
   text-transform: uppercase
+
   &:hover
     color: #f16d7f
 
@@ -1049,6 +1106,7 @@ details[open]
   border: none
   background-color: white
   padding: 0 5px
+
   &:hover
     color: #ffffff
     background-color: #f16d7f
@@ -1067,6 +1125,7 @@ details[open]
   font-weight: 700
   text-transform: uppercase
   padding: 20px 40px
+
   &:hover
     color: #ffffff
     background-color: #f16d7f
@@ -1114,6 +1173,7 @@ details[open]
   text-transform: uppercase
   padding: 12px 15px
   margin-top: 20px
+
   &:hover
     color: #ffffff
     background-color: #f16d7f
@@ -1153,24 +1213,29 @@ details[open]
   font-weight: 700
   text-transform: uppercase
   padding: 12px 18px
+
   &:hover
     color: #ffffff
     background-color: #f16d7f
 
 .proceed-checkout
+  width: 275px
   background-color: #f5f3f3
   padding: 40px
+
   &-text
     margin-bottom: 20px
 
 .sub-total
-  padding-left: 170px
+  text-align: right
+
   &-parameter
     color: #4a4a4a
     font-size: 11px
     font-weight: 400
     text-transform: uppercase
     padding-right: 20px
+
   &-value
     color: #4a4a4a
     font-size: 11px
@@ -1178,13 +1243,16 @@ details[open]
     text-transform: uppercase
 
 .grand-total
-  padding: 15px 0 0 110px
+  padding-top: 15px
+  text-align: right
+
   &-parameter
     color: #222222
     font-size: 16px
     font-weight: 700
     text-transform: uppercase
     padding-right: 15px
+
   &-value
     color: #f16d7f
     font-size: 16px
@@ -1194,6 +1262,7 @@ details[open]
 .submit-checkout-box
   border-top: 1px solid #e2e2e2
   padding-top: 20px
+
   &-link
     background-color: #ffffff
     border: 1px solid #eaeaea
@@ -1222,6 +1291,7 @@ details[open]
   text-transform: uppercase
   padding: 35px 0
   border-top: 1px solid #e8e8e8
+
   &:hover
     color: #f16d7f
 
@@ -1230,46 +1300,57 @@ details[open]
   width: 100%
   display: flex
   background-color: #ffffff
+
   &-left
     flex-grow: 1
+
   &-right
     flex-grow: 1
+
     &-link
       color: #222222
       font-size: 14px
       font-weight: 400
       line-height: 20px
       margin-left: 30px
+
       &:hover
         color: #f16d7f
+
   &-input
     color: #222222
     font-size: 12px
     font-weight: 400
     line-height: 20px
     text-transform: uppercase
+
   &-header
     color: #222222
     font-size: 13px
     font-weight: 400
     text-transform: uppercase
     padding-top: 35px
+
     &:first-of-type
       padding-top: 0
+
   &-text
     color: #b3b2b2
     font-size: 13px
     font-weight: 400
     line-height: 20px
     padding: 15px 0 30px 0
+
   &-link_top
     color: #b3b2b2
     font-size: 13px
     font-weight: 400
     line-height: 20px
     display: block
+
     &:first-of-type
       padding-bottom: 15px
+
     &:hover
       color: #f16d7f
 
@@ -1279,6 +1360,7 @@ details[open]
   font-weight: 400
   text-transform: uppercase
   display: block
+
   &:first-of-type
     padding-bottom: 20px
 
@@ -1298,6 +1380,7 @@ details[open]
   text-transform: uppercase
   padding: 20px 55px
   margin-top: 40px
+
   &:hover
     background-color: #f16d7f
     color: #ffffff
@@ -1330,6 +1413,7 @@ details[open]
   text-transform: uppercase
   padding: 20px 80px 20px 55px
   margin-top: 30px
+
   &:hover
     background-color: #f16d7f
     color: #ffffff
@@ -1339,12 +1423,15 @@ details[open]
 .product_box
   display: flex
   margin: 60px auto 110px auto
+
   &-catalog
     flex-grow: 3
+
     &-footer
       display: flex
       justify-content: space-between
       margin-top: 40px
+
       &-link
         width: 150px
         height: 44px
@@ -1356,9 +1443,11 @@ details[open]
         font-weight: bold
         line-height: 44px
         text-align: center
+
         &:hover
           border: 1px solid #ef5b70
           color: #ef5b70
+
       &-slider
         width: 260px
         height: 44px
@@ -1370,60 +1459,78 @@ details[open]
         font-weight: bold
         text-align: center
         line-height: 44px
+
     &-box
       display: flex
       justify-content: space-between
       margin-top: 40px
+
       &-item
         width: 263px
         position: relative
+
         &-product_1
           background: rgba(101, 169, 200, 0.09) url("../img/catalog_box_item_product_1.png") no-repeat center
           height: 280px
+
         &-product_2
           background: rgba(241, 109, 127, 0.09) url("../img/catalog_box_item_product_2.png") no-repeat center
           height: 280px
+
         &-product_3
           background: rgba(227, 176, 55, 0.09) url("../img/catalog_box_item_product_3.png") no-repeat center
           height: 280px
+
         &-link
           display: block
+
         &-img
           width: 100%
+
         &-text
           padding: 20px 15px
+
           &-name
             font-size: 13px
             color: #6f6e6e
             font-weight: 400
             text-transform: uppercase
             margin-bottom: 17px
+
           &-price
             font-size: 16px
             color: #f16d7f
             font-weight: 700
             text-transform: uppercase
+
         &-comment
           color: #e4af48
           font-size: 15px
           font-weight: 400
           text-transform: uppercase
           padding-left: 100px
+
         &:hover
           .product_box-catalog-box-item-product_1, .product_box-catalog-box-item-product_2, .product_box-catalog-box-item-product_3
             background-color: #3a3838
             filter: brightness(50%)
+
           .item-add_top
             display: flex
+
           .item-add_bottom
             display: flex
           box-shadow: 0 5px 8px rgba(0, 0, 0, 0.16)
+
     &-head
       display: flex
+
       &-bread_crumb
         flex-grow: 1
+
         &-box
           padding-bottom: 8px
+
         &-link
           color: #6f6e6e
           font-size: 14px
@@ -1431,13 +1538,17 @@ details[open]
           line-height: 26px
           border-right: 1px solid #6f6e6e
           padding: 0 10px
+
           &:first-child
             padding-left: 0
+
           &:last-child
             border-right: none
             padding-right: 0
+
           &:hover
             color: #ef5b70
+
       &-header
         color: #6f6e6e
         font-size: 14px
@@ -1445,10 +1556,13 @@ details[open]
         line-height: 20px
         text-transform: uppercase
         padding-bottom: 20px
+
       &-size
         flex-grow: 1
+
         &-box
           padding-bottom: 12px
+
         &-label_top
           color: #6f6e6e
           font-size: 14px
@@ -1457,10 +1571,13 @@ details[open]
           text-transform: uppercase
           padding-left: 10px
           margin-right: 30px
+
           &:first-of-type
             margin-right: 20px
+
           &:last-of-type
             margin-right: 0
+
         &-label_bottom
           color: #6f6e6e
           font-size: 14px
@@ -1469,12 +1586,16 @@ details[open]
           text-transform: uppercase
           padding-left: 10px
           margin-right: 29px
+
           &:first-of-type
             margin-right: 39px
+
           &:last-of-type
             margin-right: 0
+
       &-price
         flex-grow: 1
+
       &-details
         flex-grow: 3
         display: flex
