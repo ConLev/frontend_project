@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>WOMAN</title>
@@ -9,7 +8,6 @@
           integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="style/style.css">
 </head>
-
 <body>
 <header class="header">
     <div class="container header-flex">
@@ -52,36 +50,16 @@
         </div>
         <div class="header-right">
             <ul class="header-cart">
-                <li class="header-cart-list"><a class="header-cart-link" href="shopping_cart.html"><i
-                        class="fas fa-shopping-cart"></i></a>
+                <li class="header-cart-list"><a class="header-cart-link" href="shopping_cart.html">
+                    <img src="img/cart.svg" alt="cart_img">
+                    <span class="header-cart-count_goods"></span></a>
                     <div class="cart-drop-box">
+                        <div class="cart-drop-box-wrapper"></div>
+                        <div class="cart-drop-total">
+                            <span class="cart-drop-total-text">TOTAL</span>
+                            <span class="cart-drop-total-value"></span>
+                        </div>
                         <div>
-                            <div class="cart-drop-product">
-                                <img class="cart-drop-img" src="img/cart-drop-product_1.jpg" alt="cart product">
-                                <div class="cart-drop-text">
-                                    <a class="cart-drop-text-top" href="#">Rebox Zane</a>
-                                    <p class="cart-drop-text-middle">&#9734;&#9734;&#9734;&#9734;&#9734;</p>
-                                    <p class="cart-drop-text-bottom">1 x $250</p>
-                                </div>
-                                <div>
-                                    <input class="cart-drop-action_link" type="reset" value="&#8853;">
-                                </div>
-                            </div>
-                            <div class="cart-drop-product">
-                                <img class="cart-drop-img" src="img/cart-drop-product_2.jpg" alt="cart product">
-                                <div class="cart-drop-text">
-                                    <a class="cart-drop-text-top" href="#">Rebox Zane</a>
-                                    <p class="cart-drop-text-middle">&#9734;&#9734;&#9734;&#9734;&#9734;</p>
-                                    <p class="cart-drop-text-bottom">1 x $250</p>
-                                </div>
-                                <div>
-                                    <input class="cart-drop-action_link" type="reset" value="&#8853;">
-                                </div>
-                            </div>
-                            <div class="cart-drop-total">
-                                <span>TOTAL</span>
-                                <span>$500.00</span>
-                            </div>
                             <a class="cart-drop-link_page" href="checkout.html">Checkout</a>
                             <a class="cart-drop-link_page" href="shopping_cart.html">Go to cart</a>
                         </div>
@@ -206,7 +184,9 @@
                 <input id="single-quantity-box" type="number" min="1">
             </div>
         </div>
-        <input class="add-to-cart" type="submit" value="&#128722; Add to Cart">
+        <div class="add-to-cart">
+            <button class="add-to-cart_btn" type="submit">Add to Cart</button>
+        </div>
     </form>
 </div>
 <article>
@@ -330,6 +310,13 @@
         </div>
     </div>
 </div>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="js/cart_header/Cart.js"></script>
+<script>
+    $(document).ready(() => {
+        // noinspection JSUnusedLocalSymbols
+        let cart = new Cart('js/cart_header/getCart.json', '.cart-drop-box-wrapper');
+    });
+</script>
 </body>
-
 </html>

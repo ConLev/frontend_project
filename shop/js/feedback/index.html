@@ -2,128 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
-        #cart{
-            max-width: 300px;
-        }
-        .cart-items-wrap{
-            margin: 20px 0;
-        }
-        .cart-item{
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            grid-template-rows: 1fr;
-            padding: 10px 0;
-        }
-        .cart-item:not(:first-child){
-            border-top: 1px solid black;
-        }
-        .cart-summary{
-            text-align: right;
-        }
-        .product-quantity{
-            text-align: center;
-        }
-        .product-price{
-            text-align: right;
-        }
-        #products {
-            display: flex;
-            justify-content: space-evenly;
-        }
-        p {
-            margin: 0 0 5px 0;
-        }
-        .product{
-            display: flex;
-            flex-direction: column;
-            width: 200px;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        img {
-            max-width: 100%;
-            height: auto
-        }
-        .desc {
-            border: 1px solid #c0c0c040;
-            padding: 15px
-        }
-        .delBtn{
-            padding: 0;
-            font-size: 1.2em;
-            background: transparent;
-            border: none;
-        }
-        .delBtn:hover{
-            color: rgba(11, 11, 11, 0.69);
-        }
-        label {
-            display: block;
-            margin: 10px 0;
-        }
-        input, textarea{
-            width: 200px;
-            margin: 10px 0;
-            display: block;
-            border: 1px solid darkgray;
-            border-radius: 5px;
-            padding: 10px;
-        }
-        #feedback{
-            margin: 40px 0;
-            display: flex;
-            justify-content: space-evenly;
-            flex-wrap: wrap;
-        }
-        .comment{
-            padding: 15px;
-            width: 250px;
-            border-radius: 5px;
-            box-shadow: 0 0 5px 1px darkgrey;
-            box-sizing: border-box;
-            margin-bottom: 30px;
-        }
-        .not-approved{
-            background: darkgrey;
-            color: grey;
-        }
-        .approved{
-            color: black;
-        }
-        button{
-            border-radius: 5px;
-            border: 1px solid #2b2b2b;
-            padding: 10px 15px;
-            transition: all ease-in-out;
-            outline: none;
-        }
-        button{
-            background: #2b2b2b;
-            color: white;
-            margin-right: 10px;
-        }
-        button:hover{
-            color: #2b2b2b;
-            background: transparent;
-
-        }
-        .approve-btn{
-            background: transparent;
-            color: #2b2b2b;
-        }
-        .approve-btn:hover{
-            color: white;
-            background: #2b2b2b;
-        }
-    </style>
+    <title>feedback</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="cart"></div>
-<hr>
-<div id="products"></div>
-<form action="" id="myform">
+<form action="#" method="post" class="my_form">
     <label> Ваше имя
         <input type="text" id="author">
     </label>
@@ -132,11 +15,14 @@
     </label>
     <button type="submit">Добавить отзыв</button>
 </form>
-<div id="feedback"></div>
-<script src="jquery-3.3.1.js"></script>
-<script src="Feedback.js"></script>
-<script src="Product.js"></script>
-<script src="Cart.js"></script>
-<script src="main.js"></script>
+<div class="feedback"></div>
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../feedback/Feedback.js"></script>
+<script>
+    $(document).ready(() => {
+        // noinspection JSUnusedLocalSymbols
+        let feed = new Feedback('feedback.json', '.feedback', '.my_form');
+    });
+</script>
 </body>
 </html>
