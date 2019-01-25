@@ -183,7 +183,7 @@ details[open] .browse-box {
   padding: 20px 18px;
   position: absolute;
   top: 55px;
-  left: -1px;
+  left: -4px;
   display: none;
   flex-wrap: wrap;
   z-index: 1;
@@ -295,6 +295,9 @@ details[open] .browse-box {
   text-transform: uppercase;
 }
 
+.header-cart:hover .cart-drop-box {
+  display: block;
+}
 .header-cart-link {
   font-size: 32px;
   color: #222222;
@@ -306,9 +309,6 @@ details[open] .browse-box {
   padding: 10px;
   margin-right: 15px;
   position: relative;
-}
-.header-cart-list:hover .cart-drop-box {
-  display: block;
 }
 .header-cart-count_goods {
   width: 19px;
