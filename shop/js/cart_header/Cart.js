@@ -1,5 +1,5 @@
 class Cart {
-    constructor(source, container = '#cart'){
+    constructor(source, container) {
         this.source = source;
         this.container = container;
         this.countGoods = 0; // Общее кол-во товаров в корзине
@@ -7,12 +7,12 @@ class Cart {
         this.cartItems = []; // Все товары
         this._init();
     }
-    _init(){
-        this._render();
+
+    _init() {
         fetch(this.source)
             .then(result => result.json())
             .then(data => {
-                for (let product of data.contents){
+                for (let product of data.contents) {
                     this.cartItems.push(product);
                     this._renderItem(product);
                 }
@@ -21,79 +21,76 @@ class Cart {
                 this._renderSum();
             })
     }
-    _render(){
-        let $cartItemsDiv = $('<div/>', {
-            class: 'cart-items-wrap'
-        });
-        let $totalGoods = $('<div/>', {
-            class: 'cart-summary sum-goods'
-        });
-        let $totalPrice = $('<div/>', {
-            class: 'cart-summary sum-price'
-        });
-        $(this.container).text('Корзина');
-        $cartItemsDiv.appendTo($(this.container));
-        $totalGoods.appendTo($(this.container));
-        $totalPrice.appendTo($(this.container));
-    }
-    _renderItem(product){
+
+    _renderItem(product) {
         let $container = $('<div/>', {
-            class: 'cart-item',
+            class: 'cart-drop-product',
             'data-product': product.id_product
         });
-        $container.append($(`<p class="product-name">${product.product_name}</p>`));
-        $container.append($(`<p class="product-quantity">${product.quantity}</p>`));
-        $container.append($(`<p class="product-price">${product.price} руб.</p>`));
-        let $delBtn = $(`<button class="delBtn">&times;</button>`);
+        // noinspection JSUnresolvedVariable
+        $container.append($(`<img class="cart-drop-img" src="${product.product_img}" alt="img_product">`));
+        let $contents = $('<div/>', {
+            class: 'cart-drop-details'
+        });
+        $contents.append($(`<a class="cart-drop-details-name" href="#">${product.product_name}</a>`));
+        // noinspection JSUnresolvedVariable
+        $contents.append($(`<p class="cart-drop-details-comment">${product.product_rating}</p>`));
+        $contents.append($(`<span class="cart-drop-details-quantity">${product.quantity}</span>`));
+        $contents.append($(`<span class="cart-drop-details-factor"> x </span>`));
+        $contents.append($(`<span class="cart-drop-details-price">$${product.price.toFixed(2)}</span>`));
+        let $delBtn = $(`<button class="cart-drop-details-delBtn">&#8853;</button>`);
         $delBtn.click(() => {
             this._remove(product.id_product)
         });
+        $container.append($contents);
         $container.append($delBtn);
-        $container.appendTo($('.cart-items-wrap'));
+        $container.appendTo(this.container);
     }
-    _renderSum(){
-        $('.sum-goods').text(`Всего товаров в корзине: ${this.countGoods}`);
-        $('.sum-price').text(`Общая сумма: ${this.amount} руб.`);
+
+    _renderSum() {
+        $('.header-cart-count_goods').text(`${this.countGoods}`);
+        $('.cart-drop-total-value').text(`$${this.amount.toFixed(2)}`);
     }
-    _updateCart(product){
+
+    // noinspection JSMethodCanBeStatic
+    _updateCart(product) {
         let $container = $(`div[data-product="${product.id_product}"]`);
-        $container.find('.product-quantity').text(product.quantity);
-        $container.find('.product-price').text(`${product.quantity*product.price} руб.`);
+        $container.find('.cart-drop-details-quantity').text(product.quantity);
     }
+
     addProduct(element) {
         let productId = +$(element).data('id');
         let find = this.cartItems.find(product => product.id_product === productId);
-        if(find){
+        if (find) {
             find.quantity++;
             this.countGoods++;
             this.amount += find.price;
             this._updateCart(find);
         } else {
             let product = {
-                id_product: productId,
+                id_product: +$(element).data('id'),
+                product_img: $(element).data('img'),
                 product_name: $(element).data('name'),
+                product_rating: $(element).data('rating'),
                 price: +$(element).data('price'),
                 quantity: 1
             };
             this.cartItems.push(product);
+            console.log(this.cartItems);
             this._renderItem(product);
             this.amount += product.price;
             this.countGoods += product.quantity;
         }
         this._renderSum();
     }
-    _remove(id){
-        //TODO: удаление товара
+
+    _remove(id) {
         let find = this.cartItems.find(product => product.id_product === id);
-        if(find.quantity > 1){
-            find.quantity--;
-            this._updateCart(find);
-        } else {
-            this.cartItems.splice(this.cartItems.indexOf(find), 1);
-            $(`div[data-product="${id}"]`).remove();
-        }
-        this.countGoods--;
-        this.amount -= find.price;
+        this.cartItems.splice(this.cartItems.indexOf(find), 1);
+        $(`div[data-product="${id}"]`).remove();
+        this.amount -= find.price * find.quantity;
+        this.countGoods -= find.quantity;
         this._renderSum();
+        console.log(this.cartItems);
     }
 }

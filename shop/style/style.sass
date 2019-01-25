@@ -34,7 +34,8 @@ a
   &-summary
     border-radius: 3px 0 0 3px
     border: 1px solid #e6e6e6
-    background-color: #cdcdcc
+    border-right: none
+    background-color: #f5f5f5
     padding: 0 15px 0 15px
     line-height: 38px
     color: #222222
@@ -181,8 +182,12 @@ details[open]
     border-top: 1px solid #ececec
     border-left: 1px solid #ececec
 
+.cart-drop-box-wrapper
+  display: block
+
 .cart-drop-product
-  display: flex
+  display: grid
+  grid-template-columns: 1fr 2fr 1fr
   border-bottom: 1px solid #ededed
   margin-top: 20px
 
@@ -190,12 +195,14 @@ details[open]
     margin-top: 0
 
 .cart-drop-img
+  height: 85px
+  width: 72px
   padding-bottom: 20px
 
-.cart-drop-text
+.cart-drop-details
   padding-left: 15px
 
-  &-top
+  &-name
     color: #222222
     font-size: 12px
     font-weight: 700
@@ -204,30 +211,33 @@ details[open]
     &:hover
       color: #f16d7f
 
-  &-middle
+  &-comment
     color: #e4af48
     font-size: 12px
     font-weight: 400
     padding: 10px 0
 
-  &-bottom
+  &-quantity, &-factor, &-price
     color: #f16d7f
     font-size: 12px
     font-weight: 400
 
-.cart-drop-action_link
-  color: #c0c0c0
-  font-size: 18px
-  font-weight: 400
-  border: 1px solid #ffffff
-  background-color: #ffffff
-  margin: 35px 0 0 75px
-  padding: 0 5px
+  &-delBtn
+    color: #c0c0c0
+    font-size: 18px
+    font-weight: 400
+    border: 1px solid #ffffff
+    background-color: #ffffff
+    text-align: center
+    margin: auto
+    height: 26px
+    width: 26px
+    border-radius: 15px
 
-  &:hover
-    color: #ffffff
-    background-color: #f16d7f
-    border: 1px solid #eaeaea
+    &:hover
+      color: #ffffff
+      background-color: #f16d7f
+      border: 1px solid #eaeaea
 
 .cart-drop-link_page
   border-radius: 5px
@@ -249,15 +259,22 @@ details[open]
     color: #f16d7f
 
 .cart-drop-total
-  color: #222222
-  font-size: 16px
-  font-weight: 700
-  text-transform: uppercase
   margin-top: 20px
   display: flex
   justify-content: space-between
 
+  &-text, &-value
+    color: #222222
+    font-size: 16px
+    font-weight: 700
+    text-transform: uppercase
+
 .header-cart
+  //height: 40px
+  //padding-right: 36px
+  //background: url(../img/cart.svg) no-repeat center
+  //&:hover .cart-drop-box
+    //display: block
   &-link
     font-size: 32px
     color: #222222
@@ -271,7 +288,21 @@ details[open]
     position: relative
 
     &:hover .cart-drop-box
-      display: flex
+      display: block
+
+  &-count_goods
+    width: 19px
+    height: 19px
+    font-size: 12px
+    font-weight: 700
+    text-align: center
+    color: #ffffff
+    line-height: 1.6
+    border-radius: 50%
+    position: absolute
+    top: 5px
+    right: 0
+    background-color: #f16d7f
 
 .button
   height: 38px
@@ -298,8 +329,9 @@ details[open]
 
 .account
   border: 1px solid #e6e6e6
+  border-radius: 3px
   padding: 0 20px 0 20px
-  background-color: #cdcdcc
+  background-color: #f5f5f5
   color: #222222
 
   &:hover
@@ -489,8 +521,17 @@ details[open]
   width: 560px
   height: 540px
 
+.heading-items
+  text-align: center
+  font-size: 30px
+  font-weight: 700
+  line-height: 54px
+
 .tac
   text-align: center
+  font-size: 14px
+  color: #9f9f9f
+  font-weight: 400
 
 .box-product
   display: flex
@@ -539,16 +580,18 @@ details[open]
   width: 263px
 
 .add
+  width: 123px
   height: 39px
+  box-sizing: border-box
   border: 1px solid #ffffff
   display: block
-  padding-right: 14px
-  padding-left: 14px
+  padding-left: 40px
   font-size: 13px
   color: #ffffff
   font-weight: 700
   text-decoration: none
-  line-height: 39px
+  line-height: 37px
+  background: url(../img/cart_white.svg) no-repeat 10px 10px
 
   &:hover
     box-shadow: 0 0 8px #fff
@@ -628,7 +671,7 @@ details[open]
   display: flex
 
   &-left
-    border-right: 1px solid #ffffff
+    border-right: 1px solid #e4e4e4
     display: flex
 
   &-user
@@ -644,14 +687,13 @@ details[open]
       font-size: 16px
       font-style: italic
       line-height: 26px
-      letter-spacing: 0.4px
+      letter-spacing: 0.3px
 
     &-middle
       color: #f16d7f
       font-size: 16px
       font-weight: 700
       letter-spacing: 0.4px
-      line-height: 26px
 
     &-bottom
       color: #222224
@@ -672,7 +714,7 @@ details[open]
         font-size: 24px
         font-weight: 400
         letter-spacing: 0.6px
-        line-height: 54px
+        line-height: 34px
         text-transform: uppercase
         text-align: center
 
@@ -680,40 +722,41 @@ details[open]
         color: #222224
         font-size: 14px
         letter-spacing: 0.35px
-        line-height: 24px
+        line-height: 20px
         text-transform: uppercase
         text-align: center
 
+.email-subscribe
+  &:hover
+    #email-button
+      background-color: #f16d7f
+      border: 1px solid #f16d7f
+      color: #ffffff
+
 #email
-  width: 225px
+  width: 334px
   height: 46px
+  box-sizing: border-box
   background-color: #e1e1e1
   border: 1px solid #e1e1e1
   border-radius: 23px 0 0 23px
-  padding: 0 28px
+  padding: 0 83px 0 28px
   color: #222224
   font-size: 14px
   font-weight: 400
   letter-spacing: 0.35px
 
-  &:hover
-    opacity: 0.67
-
 #email-button
+  width: 104px
+  margin-left: -55px
   border-radius: 0 23px 23px 0
   border: 1px solid #e1e1e1
   background-color: #ffffff
-  padding: 0 20px
   color: #222224
   font-size: 14px
   font-weight: 400
   line-height: 46px
   letter-spacing: 0.35px
-
-  &:hover
-    background-color: #f16d7f
-    border: 1px solid #f16d7f
-    color: #ffffff
 
 .footer-top
   display: flex
@@ -921,12 +964,17 @@ details[open]
   padding-left: 14px
 
 .add-to-cart
-  width: 537px
+  text-align: center
+
+.add-to-cart_btn
+  width: 557px
   height: 55px
   border: 1px solid #eaeaea
-  background-color: #ffffff
   color: #bcbcbc
-  margin: 28px 0 122px 302px
+  font-size: 16px
+  margin: 28px 0 122px 0
+  background: url(../img/add-to-cart.svg) no-repeat 200px center
+  cursor: pointer
 
   &:hover
     color: #ef5b70
@@ -1672,20 +1720,25 @@ details[open]
   justify-content: center
   width: 263px
 
-.item-add_link_top
+.item-add_to_cart
+  width: 123px
   border: 1px solid #ffffff
+  box-sizing: border-box
   border-radius: 3px
   display: block
-  padding: 0 20px
+  padding-left: 40px
   font-size: 13px
   color: #ffffff
   font-weight: 700
   line-height: 39px
+  background: url(../img/cart_white.svg) no-repeat 12px 10px
 
   &:hover
     box-shadow: 0 0 8px #fff
 
 .item-add_link_bottom
+  width: 27px
+  height: 38px
   border: 1px solid #ffffff
   border-radius: 3px
   display: block
@@ -1694,9 +1747,12 @@ details[open]
   color: #ffffff
   font-weight: 700
   line-height: 39px
+  background: url(../img/heart.svg) no-repeat center
 
   &:first-child
     margin-right: 8px
+    background: url(../img/update.svg) no-repeat center
+
 
   &:hover
     box-shadow: 0 0 8px #fff

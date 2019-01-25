@@ -1,5 +1,5 @@
 class Feedback {
-    constructor(source, container = '#feedback', form = '#myform'){
+    constructor(source, container, form) {
         this.source = source;
         this.container = container;
         this.form = form;
@@ -7,22 +7,24 @@ class Feedback {
         this.curID = 0;
         this._init();
     }
-    _init(){
+
+    _init() {
         fetch(this.source)
             .then(result => result.json())
             .then(data => {
                 this.curID = data.maxID;
-                for (let comment of data.comments){
+                for (let comment of data.comments) {
                     this.comments.push(comment);
                     this._renderComment(comment);
                 }
                 this._initForm();
             })
     }
-    _initForm(){
+
+    _initForm() {
         $(this.form).submit(e => {
             e.preventDefault();
-            if(!$('#author').val() && !$('#text').val()){
+            if (!$('#author').val() && !$('#text').val()) {
                 return
             }
             let comment = {
@@ -35,7 +37,8 @@ class Feedback {
             this._renderComment(comment);
         })
     }
-    _renderComment(comment){
+
+    _renderComment(comment) {
         let $wrapper = $('<div/>', {
             class: 'comment',
             'data-id': comment.id
@@ -49,7 +52,7 @@ class Feedback {
         $delBtn.click(() => {
             this._remove(comment.id)
         });
-        if(!comment.approved){
+        if (!comment.approved) {
             let $approve = $(`<button class="approve-btn">Одобрить</button>`);
             $wrapper.append($approve);
             $wrapper.addClass('not-approved');
@@ -61,12 +64,14 @@ class Feedback {
         }
         $(this.container).append($wrapper);
     }
-    _remove(id){
+
+    _remove(id) {
         let find = this.comments.find(comment => comment.id === id);
         this.comments.splice(this.comments.indexOf(find), 1);
         $(`.comment[data-id="${id}"]`).remove();
     }
-    _approve(id){
+
+    _approve(id) {
         let find = this.comments.find(comment => comment.id === id);
         $(`.comment[data-id="${id}"]`)
             .addClass('approved')

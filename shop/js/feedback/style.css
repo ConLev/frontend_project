@@ -1,0 +1,65 @@
+.feedback {
+    margin: 40px 0;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.comment {
+    padding: 15px;
+    width: 250px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 1px darkgrey;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+
+.not-approved {
+    background: darkgrey;
+    color: grey;
+}
+
+.approved {
+    color: black;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+}
+
+input, textarea {
+    width: 200px;
+    margin: 10px 0;
+    display: block;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+button {
+    background: #2b2b2b;
+    color: white;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #2b2b2b;
+    padding: 10px 15px;
+    transition: all ease-in-out;
+    outline: none;
+}
+
+button:hover {
+    color: #2b2b2b;
+    background: transparent;
+
+}
+
+.approve-btn {
+    background: transparent;
+    color: #2b2b2b;
+}
+
+.approve-btn:hover {
+    color: white;
+    background: #2b2b2b;
+}

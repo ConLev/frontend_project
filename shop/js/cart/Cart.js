@@ -44,6 +44,7 @@ class Cart {
         let $remBtn = $(`<button class="shopping-cart-button_clear">CLEAR SHOPPING CART</button>`);
         $remBtn.click(() => {
             this.cartItems = [];
+            $('.header-cart-count_goods').text('0');
             $('.shopping-cart_container').empty();
         });
         $shoppingCartButton.append($remBtn);
@@ -129,6 +130,7 @@ class Cart {
     _renderSum() {
         $('.sub-total-value').text(`$${this.amount}`);
         $('.grand-total-value').text(`$${this.amount}`);
+        $('.header-cart-count_goods').text(`${this.countGoods}`);
     }
 
     // noinspection JSMethodCanBeStatic
