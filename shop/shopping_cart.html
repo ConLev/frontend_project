@@ -18,7 +18,7 @@
             </a>
             <form class="header-form" action="#">
                 <details class="header-left-details">
-                    <summary class="header-left-summary">browse</summary>
+                    <summary class="header-left-summary">Browse</summary>
                     <div class="browse-box">
                         <div>
                             <h3 class="drop-heading">Woman</h3>
@@ -140,12 +140,14 @@
     <div class="form-cart container">
         <form class="form-shipping-adress" method="post" action="#">
             <legend id="shipping-adress">Shipping Adress</legend>
-            <details class="shipping-box">
-                <summary class="shipping-details">Bangladesh</summary>
-                <summary class="shipping-details">New York</summary>
-                <summary class="shipping-details">London</summary>
-                <summary class="shipping-details">Paris</summary>
-            </details>
+            <label>
+                <select class="shipping-cart-select">
+                    <option class="shipping-cart-option">Bangladesh</option>
+                    <option class="shipping-cart-option">New York</option>
+                    <option class="shipping-cart-option">London</option>
+                    <option class="shipping-cart-option">Paris</option>
+                </select>
+            </label>
             <input type="text" id="shipping-state" placeholder="State">
             <input type="number" id="zip" min="0" placeholder="Postcode / Zip">
             <input type="submit" id="get-a-quote" value="get a quote">

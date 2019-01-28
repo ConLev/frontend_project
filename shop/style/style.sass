@@ -12,6 +12,9 @@ li
 a
   text-decoration: none
 
+select::-ms-expand
+  display: none
+
 .header
   height: 100px
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.17)
@@ -32,24 +35,49 @@ a
   align-items: center
 
   &-summary
-    border-radius: 3px 0 0 3px
     border: 1px solid #e6e6e6
+    border-radius: 3px 0 0 3px
     border-right: none
     background-color: #f5f5f5
-    padding: 0 15px 0 15px
-    line-height: 38px
+    padding: 0 10px 0 10px
+    line-height: 35px
     color: #222222
     font-size: 14px
     font-weight: 300
     letter-spacing: 0.35px
     margin-left: 35px
+    cursor: pointer
+
+    &::-webkit-details-marker
+      display: none
+
+    &::after
+      content: '\25BC'
+      padding-left: 7px
+      color: #838383
+      font-size: 10px
 
     &:hover
       background-color: #f16d7f
       color: #ffffff
 
+      &::after
+        color: #ffffff
+
   &-details
     position: relative
+
+  &-details[open]
+    .header-left-summary
+      background-color: #f16d7f
+      color: #ffffff
+
+    .header-left-summary::after
+      //content: '\25B2'
+      color: #ffffff
+
+  .browse-box
+    display: block
 
 .logo
   display: flex
@@ -63,32 +91,15 @@ a
   &:hover
     filter: opacity(50%)
 
-.logo-img
-  margin-right: 10px
+  &-img
+    margin-right: 10px
 
-.logo-d
-  color: #f16d7f
-  font-weight: 400
+  &-d
+    color: #f16d7f
+    font-weight: 400
 
 .header-form
   display: flex
-
-summary
-  position: relative
-
-  &::-webkit-details-marker
-    display: none
-
-  &::after
-    content: '\25B6'
-    padding-left: 0.5em
-
-details[open]
-  > summary::after
-    content: '\25BC'
-
-  .browse-box
-    display: block
 
 .browse-box
   border-radius: 5px
@@ -98,7 +109,7 @@ details[open]
   padding: 20px
   position: absolute
   top: 40px
-  left: 30px
+  left: 25px
   display: none
   z-index: 1
 
@@ -145,6 +156,7 @@ details[open]
   border-left: none
   font-size: 14px
   color: #a4a4a4
+  cursor: pointer
 
   &:hover
     background-color: #f16d7f
@@ -223,21 +235,22 @@ details[open]
     font-weight: 400
 
   &-delBtn
-    color: #c0c0c0
-    font-size: 18px
+    color: #ffffff
+    font-size: 10px
     font-weight: 400
     border: 1px solid #ffffff
-    background-color: #ffffff
+    background-color: #c0c0c0
     text-align: center
     margin: auto
-    height: 26px
-    width: 26px
-    border-radius: 15px
+    height: 15px
+    width: 15px
+    line-height: 0.7
+    border-radius: 8px
+    cursor: pointer
 
     &:hover
-      color: #ffffff
       background-color: #f16d7f
-      border: 1px solid #eaeaea
+      border: 1px solid #f16d7f
 
 .cart-drop-link_page
   border-radius: 5px
@@ -274,14 +287,13 @@ details[open]
     display: block
 
   &-link
-    font-size: 32px
     color: #222222
 
     &:hover
       color: #f16d7f
 
   &-list
-    padding: 10px
+    padding: 20px 10px 10px 10px
     margin-right: 15px
     position: relative
 
@@ -295,8 +307,8 @@ details[open]
     line-height: 1.6
     border-radius: 50%
     position: absolute
-    top: 5px
-    right: 0
+    top: 11px
+    right: 1px
     background-color: #f16d7f
 
 .button
@@ -325,12 +337,37 @@ details[open]
 .account
   border: 1px solid #e6e6e6
   border-radius: 3px
-  padding: 0 20px 0 20px
   background-color: #f5f5f5
+  padding: 0 13px 0 13px
+  line-height: 34px
   color: #222222
+  font-size: 15px
+  font-weight: 300
+  cursor: pointer
+
+  &::-webkit-details-marker
+    display: none
+
+  &::after
+    content: '\25BC'
+    padding-left: 8px
+    color: #838383
+    font-size: 10px
 
   &:hover
     background-color: #f16d7f
+    color: #ffffff
+
+    &::after
+      color: #ffffff
+
+.my-account[open]
+  .account
+    background-color: #f16d7f
+    color: #ffffff
+
+  .account::after
+    content: '\25B2'
     color: #ffffff
 
 .menu
@@ -546,6 +583,13 @@ details[open]
   color: #f16d7f
   font-weight: 700
   text-transform: uppercase
+
+.product-comment
+  color: #e4af48
+  font-size: 15px
+  font-weight: 400
+  text-transform: uppercase
+  padding-left: 100px
 
 .item-product
   width: 263px
@@ -925,7 +969,7 @@ details[open]
 .product-description-bottom
   display: flex
   justify-content: space-around
-  padding: 0 250px
+  padding: 0 271px
   margin-top: 60px
 
 .details-header
@@ -934,19 +978,43 @@ details[open]
   font-weight: 700
   line-height: 24px
   text-transform: uppercase
+  display: inline-grid
 
-.details-box
-  width: 130px
+.details-box-color
+  width: 144px
   height: 35px
   border: 1px solid #eaeaea
+  border-radius: 0
+  color: #bcbcbc
+  font-size: 13px
+  font-weight: 400
+  padding-left: 30px
+  -webkit-appearance: none
+  -moz-appearance: none
+  background-image: url(../img/down-arrow_single-page.svg), url(../img/square-red.svg)
+  background-position: top 12px right 14px, top 12px left 14px
+  background-repeat: no-repeat, no-repeat
+  background-size: 10px, 10px
+  background-color: #ffffff
+  cursor: pointer
 
-  &-summary
-    color: #bcbcbc
-    font-size: 13px
-    font-weight: 400
-    line-height: 35px
-    padding-left: 14px
-    background-color: #ffffff
+.details-box-size
+  width: 144px
+  height: 35px
+  border: 1px solid #eaeaea
+  border-radius: 0
+  color: #bcbcbc
+  font-size: 13px
+  font-weight: 400
+  padding-left: 14px
+  -webkit-appearance: none
+  -moz-appearance: none
+  background-image: url(../img/down-arrow_single-page.svg)
+  background-position: top 12px right 14px
+  background-repeat: no-repeat
+  background-size: 10px
+  background-color: #ffffff
+  cursor: pointer
 
 #single-quantity-box
   width: 114px
@@ -962,74 +1030,95 @@ details[open]
   text-align: center
 
 .add-to-cart_btn
-  width: 557px
+  width: 537px
   height: 55px
   border: 1px solid #eaeaea
   color: #bcbcbc
   font-size: 16px
   margin: 28px 0 122px 0
-  background: url(../img/add-to-cart.svg) no-repeat 200px center
+  background: url(../img/add-to-cart.svg) no-repeat 185px center
   cursor: pointer
 
   &:hover
     color: #ef5b70
     border: 1px solid #ef5b70
 
-.like-also-header
-  color: #4d4d4d
-  font-size: 24px
-  font-weight: 400
-  line-height: 20px
-  text-transform: uppercase
-  text-align: center
-  margin-top: 120px
-
 .like-also
   display: flex
   justify-content: space-between
   margin: 70px auto
 
-.like-also-product
-  display: grid
+  &-header
+    color: #4d4d4d
+    font-size: 24px
+    font-weight: 900
+    line-height: 20px
+    text-transform: uppercase
+    text-align: center
+    margin-top: 120px
 
-.also-product_1
-  width: 260px
-  height: 280px
-  background: #e9e9e9 url(../img/also-product-img_1.png) no-repeat center
+  &-product
+    display: grid
 
-.also-product_2
-  width: 260px
-  height: 280px
-  background: #e9e9e9 url(../img/also-product-img_2.png) no-repeat center
+    &:hover
+      img
+        filter: brightness(50%)
+      box-shadow: 0 5px 8px rgba(0, 0, 0, 0.16)
 
-.also-product_3
-  width: 260px
-  height: 280px
-  background: #e9e9e9 url(../img/also-product-img_3.png) no-repeat center
+    &-1
+      width: 260px
+      height: 280px
+      background: #e9e9e9 url(../img/also-product-img_1.png) no-repeat center
 
-.also-product_4
-  width: 260px
-  height: 280px
-  background: #e9e9e9 url(../img/also-product-img_2.png) no-repeat center
+      &:hover
+        background-color: rgba(129, 129, 129, 0.07)
 
-.also-product_1:hover, .also-product_2:hover, .also-product_3:hover, .also-product_4:hover
-  background-color: rgba(129, 129, 129, 0.07)
+    &-2
+      width: 260px
+      height: 280px
+      background: #e9e9e9 url(../img/also-product-img_2.png) no-repeat center
 
-.also-product-text
-  padding: 18px 14px
+      &:hover
+        background-color: rgba(129, 129, 129, 0.07)
 
-.also-product-name
-  color: #6f6e6e
-  font-size: 14px
-  font-weight: 400
-  text-transform: uppercase
-  padding-bottom: 17px
+    &-3
+      width: 260px
+      height: 280px
+      background: #e9e9e9 url(../img/also-product-img_3.png) no-repeat center
 
-.also-product-price
-  color: #f16d7f
-  font-size: 16px
-  font-weight: 700
-  text-transform: uppercase
+      &:hover
+        background-color: rgba(129, 129, 129, 0.07)
+
+    &-4
+      width: 260px
+      height: 280px
+      background: url(../img/also-product-img_4.png) no-repeat center
+
+      &:hover
+        filter: opacity(75%)
+
+    &-box
+      padding: 18px 14px
+
+    &-name
+      color: #6f6e6e
+      font-size: 14px
+      font-weight: 400
+      text-transform: uppercase
+      padding-bottom: 17px
+
+    &-price
+      color: #f16d7f
+      font-size: 16px
+      font-weight: 700
+      text-transform: uppercase
+
+    &-comment
+      color: #e4af48
+      font-size: 15px
+      font-weight: 400
+      text-transform: uppercase
+      padding-left: 100px
 
 .shopping-cart_container
   margin-top: 90px
@@ -1143,31 +1232,51 @@ details[open]
   text-align: center
 
 .cart-product-remBtn
-  color: #c0c0c0
-  font-size: 18px
+  color: #ffffff
+  border: 1px solid #ffffff
+  font-size: 10px
   font-weight: 400
-  border: none
-  background-color: white
-  padding: 0 5px
+  background-color: #c0c0c0
+  text-align: center
+  margin: auto
+  height: 15px
+  width: 15px
+  line-height: 0.7
+  border-radius: 8px
+  cursor: pointer
 
   &:hover
-    color: #ffffff
     background-color: #f16d7f
-    border: 1px solid #eaeaea
+    border: 1px solid #f16d7f
 
 .shopping-cart-button
   margin-top: 40px
   display: flex
   justify-content: space-between
 
-.shopping-cart-button_clear, .shopping-cart-button_continue
+.shopping-cart-button_clear
   border: 1px solid #eaeaea
   background-color: #ffffff
+  box-sizing: border-box
   color: #4a4a4a
   font-size: 14px
   font-weight: 700
   text-transform: uppercase
-  padding: 20px 40px
+  padding: 16px 33px
+
+  &:hover
+    color: #ffffff
+    background-color: #f16d7f
+
+.shopping-cart-button_continue
+  border: 1px solid #eaeaea
+  background-color: #ffffff
+  box-sizing: border-box
+  color: #4a4a4a
+  font-size: 14px
+  font-weight: 700
+  text-transform: uppercase
+  padding: 16px 35px
 
   &:hover
     color: #ffffff
@@ -1183,22 +1292,26 @@ details[open]
   font-weight: 700
   text-transform: uppercase
 
-.shipping-box
+.shipping-cart-select
   width: 355px
   height: 45px
   border: 1px solid #eaeaea
+  border-radius: 0
   margin-top: 20px
-
-.shipping-details
-  background-color: #ffffff
   color: #b1b1b1
   font-size: 13px
   font-weight: 300
-  padding: 14px 18px
+  padding: 12px 18px
+  -webkit-appearance: none
+  -moz-appearance: none
+  background: url(../img/down-arrow.svg) 95% no-repeat #ffffff
+  background-size: 10px
+  cursor: pointer
 
 #shipping-state, #zip
   border: 1px solid #eaeaea
-  width: 319px
+  box-sizing: border-box
+  width: 355px
   height: 45px
   color: #b1b1b1
   font-size: 13px
@@ -1209,12 +1322,13 @@ details[open]
 
 #get-a-quote
   border: 1px solid #eaeaea
+  box-sizing: border-box
   background-color: #ffffff
   color: #4a4a4a
   font-size: 11px
   font-weight: 700
   text-transform: uppercase
-  padding: 12px 15px
+  padding: 10px 11px
   margin-top: 20px
 
   &:hover
@@ -1239,7 +1353,8 @@ details[open]
 
 #discount
   border: 1px solid #eaeaea
-  width: 319px
+  box-sizing: border-box
+  width: 355px
   height: 45px
   color: #b1b1b1
   font-size: 13px
@@ -1250,24 +1365,25 @@ details[open]
 
 #submit-discount
   border: 1px solid #eaeaea
+  box-sizing: border-box
   background-color: #ffffff
   color: #4a4a4a
   font-size: 11px
   font-weight: 700
   text-transform: uppercase
-  padding: 12px 18px
+  padding: 10px 14px
 
   &:hover
     color: #ffffff
     background-color: #f16d7f
 
 .proceed-checkout
-  width: 275px
+  width: 280px
   background-color: #f5f3f3
   padding: 40px
 
   &-text
-    margin-bottom: 20px
+    margin-bottom: 15px
 
 .sub-total
   text-align: right
@@ -1303,8 +1419,9 @@ details[open]
     text-transform: uppercase
 
 .submit-checkout-box
+  width: 270px
   border-top: 1px solid #e2e2e2
-  padding-top: 20px
+  padding: 15px 10px 0 10px
 
   &-link
     background-color: #ffffff
@@ -1315,7 +1432,7 @@ details[open]
     text-transform: uppercase
     text-align: center
     display: block
-    padding: 20px 0
+    padding: 15px 0
 
     &:hover
       color: #ffffff
@@ -1334,12 +1451,16 @@ details[open]
   text-transform: uppercase
   padding: 35px 0
   border-top: 1px solid #e8e8e8
+  cursor: pointer
+
+  &::-webkit-details-marker
+    display: none
 
   &:hover
     color: #f16d7f
 
 .checkout-drop_box
-  padding: 0 0 80px 35px
+  padding: 0 0 80px 30px
   width: 100%
   display: flex
   background-color: #ffffff
@@ -1366,6 +1487,12 @@ details[open]
     font-weight: 400
     line-height: 20px
     text-transform: uppercase
+
+  &-input_ls
+    color: #ff0d0d
+    font-size: 17px
+    font-weight: 400
+    line-height: 20px
 
   &-header
     color: #222222
@@ -1421,7 +1548,7 @@ details[open]
   font-size: 14px
   font-weight: 700
   text-transform: uppercase
-  padding: 20px 55px
+  padding: 16px 51px
   margin-top: 40px
 
   &:hover
@@ -1429,9 +1556,10 @@ details[open]
     color: #ffffff
 
 #checkout-box_right-input
-  width: 350px
+  width: 390px
   height: 45px
   border: 1px solid #eaeaea
+  box-sizing: border-box
   background-color: #ffffff
   padding: 0 20px
   display: block
@@ -1454,7 +1582,7 @@ details[open]
   font-size: 14px
   font-weight: 700
   text-transform: uppercase
-  padding: 20px 80px 20px 55px
+  padding: 16px 80px 16px 50px
   margin-top: 30px
 
   &:hover
@@ -1469,6 +1597,17 @@ details[open]
 
   &-catalog
     flex-grow: 3
+
+    &-price_value
+      display: flex
+      justify-content: space-between
+
+      &-min, &-max
+        color: #6f6e6e
+        font-size: 14px
+        font-weight: 400
+        line-height: 26px
+        display: block
 
     &-footer
       display: flex
@@ -1647,32 +1786,36 @@ details[open]
         background-color: #f3f3f3
 
         &-header
-          padding: 10px
+          padding: 5px 10px
           margin-left: 10px
           border: 1px solid #ebebeb
+          border-right: none
+          box-sizing: border-box
           background-color: #ffffff
           color: #6f6e6e
           font-size: 14px
           font-weight: 400
 
         &-summary
-          padding: 10px
+          height: 30px
+          padding: 0 36px 0 10px
           border: 1px solid #ebebeb
-          border-left: none
-          background-color: #ffffff
+          border-radius: 0
           color: #6f6e6e
           font-size: 14px
           font-weight: 400
-
-          &:hover
-            background-color: #ef5b70
-            color: #ffffff
+          -webkit-appearance: none
+          -moz-appearance: none
+          background: url(../img/down-arrow.svg) center right 10px no-repeat #ffffff
+          background-size: 10px
+          cursor: pointer
 
   &-drop
     flex-grow: 1
 
     &-details
       padding-bottom: 20px
+      position: relative
 
     &-summary
       border-left: 5px solid #ef5b70
@@ -1684,8 +1827,30 @@ details[open]
       text-transform: uppercase
       padding-left: 12px
       width: 240px
+      cursor: pointer
+
+      &::-webkit-details-marker
+        display: none
+
+      &::after
+        content: '\25BC'
+        color: #838383
+        font-size: 10px
+        position: absolute
+        right: 32px
 
       &:hover
+        color: #ef5b70
+
+        &::after
+          color: #ef5b70
+
+    &-details[open]
+      .product_box-drop-summary
+        color: #ef5b70
+
+      .product_box-drop-summary::after
+        content: '\25B2'
         color: #ef5b70
 
     &-box_link
@@ -1751,13 +1916,6 @@ details[open]
 
   &:hover
     box-shadow: 0 0 8px #fff
-
-#price_label
-  color: #6f6e6e
-  font-size: 14px
-  font-weight: 400
-  line-height: 26px
-  display: block
 
 .product-feature
   background-color: #222224
