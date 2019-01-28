@@ -38,7 +38,7 @@ class Cart {
         $contents.append($(`<span class="cart-drop-details-quantity">${product.quantity}</span>`));
         $contents.append($(`<span class="cart-drop-details-factor"> x </span>`));
         $contents.append($(`<span class="cart-drop-details-price">$${product.price.toFixed(2)}</span>`));
-        let $delBtn = $(`<button class="cart-drop-details-delBtn">&#8853;</button>`);
+        let $delBtn = $(`<button class="cart-drop-details-delBtn">&#10005;</button>`);
         $delBtn.click(() => {
             this._remove(product.id_product)
         });
