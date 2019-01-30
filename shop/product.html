@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <!--suppress XmlDuplicatedId -->
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>MAN</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
           integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="../bower_components/jquery-ui/themes/base/slider.css">
     <link rel="stylesheet" href="style/style.css">
 </head>
-
 <body>
 <header class="header">
     <div class="container header-flex">
@@ -241,12 +240,10 @@
             </div>
             <div class="product_box-catalog-head-price">
                 <h2 class="product_box-catalog-head-header">pRICE</h2>
-                <label>
-                    <input id="price" type="range" min="40" max="100" step="1" value="52">
-                </label>
+                <div class="product_box-catalog-head-price-range"></div>
                 <div class="product_box-catalog-price_value">
-                    <span class="product_box-catalog-price_value-min">$52</span>
-                    <span class="product_box-catalog-price_value-max">$400</span>
+                    <span class="product_box-catalog-price_value-min"></span>
+                    <span class="product_box-catalog-price_value-max"></span>
                 </div>
             </div>
         </div>
@@ -550,7 +547,8 @@
         </div>
     </div>
 </div>
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../bower_components/jquery-ui/jquery-ui.min.js"></script>
 <script src="js/cart_header/Cart.js"></script>
 <script>
     $(document).ready(() => {
@@ -560,6 +558,23 @@
             e.preventDefault();
             cart.addProduct(e.currentTarget);
             //console.log(e.currentTarget);
+        });
+        $(() => {
+            let $box = $('.product_box-catalog-head-price-range');
+            let $minPrice = $('.product_box-catalog-price_value-min');
+            let $maxPrice = $('.product_box-catalog-price_value-max');
+            $box.slider({
+                range: true,
+                min: 0,
+                max: 700,
+                values: [52, 400],
+                slide: ((event, ui) => {
+                    $minPrice.text("$" + ui.values[0]);
+                    $maxPrice.text("$" + ui.values[1]);
+                })
+            });
+            $minPrice.text("$" + $box.slider("values", 0));
+            $maxPrice.text("$" + $box.slider("values", 1));
         });
     });
 </script>

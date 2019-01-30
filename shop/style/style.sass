@@ -111,7 +111,7 @@ select::-ms-expand
   top: 40px
   left: 25px
   display: none
-  z-index: 1
+  z-index: 2
 
   &:before
     content: ""
@@ -179,7 +179,7 @@ select::-ms-expand
   left: -4px
   display: none
   flex-wrap: wrap
-  z-index: 1
+  z-index: 2
 
   &:before
     content: ""
@@ -406,7 +406,7 @@ select::-ms-expand
   top: 45px
   left: -5px
   display: none
-  z-index: 1
+  z-index: 2
 
   &:before
     content: ""
@@ -898,10 +898,62 @@ select::-ms-expand
 .bread-crumb-head:hover, .bread-crumb-other:hover
   color: #f16d7f
 
-.slide-product-img
+.slide-product
   height: 777px
   border: 1px solid #eaeaea
-  background: #f7f7f7 url(../img/slide-product-img.png) no-repeat center
+  background-color: #f7f7f7
+
+.slide-product-img
+  height: 708px
+  background: url(../img/slide-product-img.png) no-repeat center
+
+.owl-prev
+  position: absolute
+  top: 50%
+  width: 47px
+  height: 47px
+  background-color: rgba(42, 42, 42, 0.15)
+  border: none
+  color: #ffffff
+  font-size: 24px
+  font-weight: 400
+  cursor: pointer
+  z-index: 1
+
+  &:hover
+    background-color: #f16d7f
+
+.owl-next
+  position: absolute
+  top: 50%
+  right: 0
+  width: 47px
+  height: 47px
+  background-color: rgba(42, 42, 42, 0.15)
+  border: none
+  color: #ffffff
+  font-size: 24px
+  font-weight: 400
+  cursor: pointer
+  z-index: 1
+
+  &:hover
+    background-color: #f16d7f
+
+.dots-container
+  text-align: center
+
+.owl-dot
+  width: 63px
+  height: 1px
+  background-color: #eaeaea
+  border: none
+
+  &.active
+    width: 63px
+    height: 3px
+    background-color: #ef5b70
+    border: none
 
 .product-description
   border: 1px solid #eaeaea
@@ -918,7 +970,7 @@ select::-ms-expand
   line-height: 24px
   text-transform: uppercase
   text-align: center
-  padding-top: 70px
+  padding-top: 50px
 
 .product-decription-header_2
   color: #4d4d4d
@@ -927,7 +979,7 @@ select::-ms-expand
   line-height: 24px
   text-transform: uppercase
   text-align: center
-  padding-top: 35px
+  padding-top: 18px
 
 .product-description-text
   color: #5e5e5e
@@ -1777,6 +1829,26 @@ select::-ms-expand
 
       &-price
         flex-grow: 1
+        width: 176px
+
+        &-range
+          margin-bottom: 24px
+          z-index: 1
+
+        .ui-widget-content
+          height: 6px
+          background-color: #f0f0f0
+          border: none
+
+        .ui-slider-range
+          background-color: #f16d7f
+
+        .ui-slider-handle
+          width: 14px
+          height: 14px
+          border-radius: 50%
+          border-color: #f16d7f
+          background-color: #f16d7f
 
       &-details
         flex-grow: 3
