@@ -118,7 +118,7 @@ class Cart {
         let $action = $(`<div/>`, {
             class: 'cart-product-action'
         });
-        let $remBtn = $(`<button class="cart-product-remBtn">&otimes;</button>`);
+        let $remBtn = $(`<button class="cart-product-remBtn">&#10005;</button>`);
         $remBtn.click(() => {
             this._remove(product.id_product)
         });

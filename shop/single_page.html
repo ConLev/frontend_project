@@ -6,6 +6,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
           integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="../bower_components/owl.carousel/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="../bower_components/owl.carousel/dist/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
@@ -17,7 +19,7 @@
             </a>
             <form class="header-form" action="#">
                 <details class="header-left-details">
-                    <summary class="header-left-summary">browse</summary>
+                    <summary class="header-left-summary">Browse</summary>
                     <div class="browse-box">
                         <div>
                             <h3 class="drop-heading">Woman</h3>
@@ -143,10 +145,17 @@
         </div>
     </div>
 </nav>
-<div class="slide-product-img"></div>
+<div class="slide-product">
+    <div class="owl-carousel owl-theme">
+        <div class="slide-product-img"></div>
+        <div class="slide-product-img"></div>
+        <div class="slide-product-img"></div>
+    </div>
+</div>
 <div class="product-description container">
     <div class="product-description-top">
         <h3 class="product-decription-header_1">WOMAN COLLECTION</h3>
+        <div class="dots-container"></div>
         <h3 class="product-decription-header_2">Moschino Cheap And Chic</h3>
         <p class="product-description-text">Compellingly actualize fully researched processes before proactive
             outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely
@@ -162,26 +171,28 @@
     <form class="" action="#">
         <div class="product-description-bottom">
             <div>
-                <span class="details-header">CHOOSE COLOR</span>
-                <details class="details-box">
-                    <summary class="details-box-summary">&#9632; Red</summary>
-                    <summary class="details-box-summary">&#9632; Pink</summary>
-                    <summary class="details-box-summary">&#9632; Orange</summary>
-                    <summary class="details-box-summary">&#9632; Yellow</summary>
-                </details>
+                <label class="details-header">CHOOSE COLOR
+                    <select class="details-box-color">
+                        <option class="details-box-summary">Red</option>
+                        <option class="details-box-summary">Pink</option>
+                        <option class="details-box-summary">Orange</option>
+                        <option class="details-box-summary">Yellow</option>
+                    </select>
+                </label>
             </div>
             <div>
-                <span class="details-header">CHOOSE SIZE</span>
-                <details class="details-box">
-                    <summary class="details-box-summary">XXL</summary>
-                    <summary class="details-box-summary">XL</summary>
-                    <summary class="details-box-summary">L</summary>
-                    <summary class="details-box-summary">M</summary>
-                </details>
+                <label class="details-header">CHOOSE SIZE
+                    <select class="details-box-size">
+                        <option class="details-box-summary">XXL</option>
+                        <option class="details-box-summary">XL</option>
+                        <option class="details-box-summary">L</option>
+                        <option class="details-box-summary">M</option>
+                    </select>
+                </label>
             </div>
             <div>
                 <label class="details-header" for="single-quantity-box">QUANTITY</label>
-                <input id="single-quantity-box" type="number" min="1">
+                <input id="single-quantity-box" type="number" min="1" value="2">
             </div>
         </div>
         <div class="add-to-cart">
@@ -193,31 +204,39 @@
     <h3 class="like-also-header">you may like also</h3>
     <div class="like-also container">
         <section class="like-also-product">
-            <a href="#" class="also-product_1"></a>
-            <div class="also-product-text">
-                <p class="also-product-name">BLAZE LEGGINGS</p>
-                <p class="also-product-price">$52.00</p>
+            <a href="#" class="like-also-product-1" data-id="301" data-img="img/also-product-img_1.jpg"
+               data-name="BLAZE LEGGINGS" data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-price="52.00"></a>
+            <div class="like-also-product-box">
+                <p class="like-also-product-name">BLAZE LEGGINGS</p>
+                <span class="like-also-product-price">$52.00</span>
+                <span class="like-also-product-comment">&#9734;&#9734;&#9734;&#9734;&#9734;</span>
             </div>
         </section>
         <section class="like-also-product">
-            <a href="#" class="also-product_2"></a>
-            <div class="also-product-text">
-                <p class="also-product-name">ALEXA SWEATER</p>
-                <p class="also-product-price">$52.00</p>
+            <a href="#" class="like-also-product-2" data-id="302" data-img="img/also-product-img_2.jpg"
+               data-name="ALEXA SWEATER" data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-price="52.00"></a>
+            <div class="like-also-product-box">
+                <p class="like-also-product-name">ALEXA SWEATER</p>
+                <span class="like-also-product-price">$52.00</span>
+                <span class="like-also-product-comment">&#9734;&#9734;&#9734;&#9734;&#9734;</span>
             </div>
         </section>
         <section class="like-also-product">
-            <a href="#" class="also-product_3"></a>
-            <div class="also-product-text">
-                <p class="also-product-name">AGNES TOP</p>
-                <p class="also-product-price">$52.00</p>
+            <a href="#" class="like-also-product-3" data-id="303" data-img="img/also-product-img_3.jpg"
+               data-name="AGNES TOP" data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-price="52.00"></a>
+            <div class="like-also-product-box">
+                <p class="like-also-product-name">AGNES TOP</p>
+                <span class="like-also-product-price">$52.00</span>
+                <span class="like-also-product-comment">&#9734;&#9734;&#9734;&#9734;&#9734;</span>
             </div>
         </section>
         <section class="like-also-product">
-            <a href="#" class="also-product_4"></a>
-            <div class="also-product-text">
-                <p class="also-product-name">SYLVA SWEATER</p>
-                <p class="also-product-price">$52.00</p>
+            <a href="#" class="like-also-product-4" data-id="304" data-img="img/also-product-img_4.jpg"
+               data-name="SYLVA SWEATER" data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-price="52.00"></a>
+            <div class="like-also-product-box">
+                <p class="like-also-product-name">SYLVA SWEATER</p>
+                <span class="like-also-product-price">$52.00</span>
+                <span class="like-also-product-comment">&#9734;&#9734;&#9734;&#9734;&#9734;</span>
             </div>
         </section>
     </div>
@@ -310,12 +329,36 @@
         </div>
     </div>
 </div>
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
 <script src="js/cart_header/Cart.js"></script>
 <script>
     $(document).ready(() => {
         // noinspection JSUnusedLocalSymbols
         let cart = new Cart('js/cart_header/getCart.json', '.cart-drop-box-wrapper');
+        //$('.like-also').on('click', 'a', e => {
+        //e.preventDefault();
+        //cart.addProduct(e.currentTarget);
+        //console.log(e.currentTarget);
+        //});
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            dotsContainer: '.dots-container',
+            navContainer: '.owl-carousel',
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 1
+                },
+                1000: {
+                    items: 1
+                }
+            }
+        })
     });
 </script>
 </body>
