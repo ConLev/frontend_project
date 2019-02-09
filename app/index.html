@@ -185,7 +185,8 @@
             </a>
             <div class="parent-add">
                 <a class="add" href="#" data-id="101" data-img="img/product_1.jpg" data-name="Mango People"
-                   data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-price="52.00">Add to Cart</a>
+                   data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-color="red" data-size="XXL" data-shipping="FREE"
+                   data-price="52.00">Add to Cart</a>
             </div>
         </section>
         <section class="item-product">
@@ -199,7 +200,8 @@
             </a>
             <div class="parent-add">
                 <a class="add" href="#" data-id="102" data-img="img/product_2.jpg" data-name="Mango People"
-                   data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-price="52.00">Add to Cart</a>
+                   data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-color="red" data-size="XXL" data-shipping="FREE"
+                   data-price="52.00">Add to Cart</a>
             </div>
         </section>
         <section class="item-product">
@@ -213,7 +215,8 @@
             </a>
             <div class="parent-add">
                 <a class="add" href="#" data-id="103" data-img="img/product_3.jpg" data-name="Mango People"
-                   data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-price="52.00">Add to Cart</a>
+                   data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-color="red" data-size="XXL" data-shipping="FREE"
+                   data-price="52.00">Add to Cart</a>
             </div>
         </section>
         <section class="item-product">
@@ -227,7 +230,8 @@
             </a>
             <div class="parent-add">
                 <a class="add" href="#" data-id="104" data-img="img/product_4.jpg" data-name="Mango People"
-                   data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-price="52.00">Add to Cart</a>
+                   data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-color="red" data-size="XXL" data-shipping="FREE"
+                   data-price="52.00">Add to Cart</a>
             </div>
         </section>
         <section class="item-product">
@@ -241,7 +245,8 @@
             </a>
             <div class="parent-add">
                 <a class="add" href="#" data-id="105" data-img="img/product_5.jpg" data-name="Mango People"
-                   data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-price="52.00">Add to Cart</a>
+                   data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-color="red" data-size="XXL" data-shipping="FREE"
+                   data-price="52.00">Add to Cart</a>
             </div>
         </section>
         <section class="item-product">
@@ -255,7 +260,8 @@
             </a>
             <div class="parent-add">
                 <a class="add" href="#" data-id="106" data-img="img/product_6.jpg" data-name="Mango People"
-                   data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-price="52.00">Add to Cart</a>
+                   data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-color="red" data-size="XXL" data-shipping="FREE"
+                   data-price="52.00">Add to Cart</a>
             </div>
         </section>
         <section class="item-product">
@@ -269,7 +275,8 @@
             </a>
             <div class="parent-add">
                 <a class="add" href="#" data-id="107" data-img="img/product_7.jpg" data-name="Mango People"
-                   data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-price="52.00">Add to Cart</a>
+                   data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-color="red" data-size="XXL" data-shipping="FREE"
+                   data-price="52.00">Add to Cart</a>
             </div>
         </section>
         <section class="item-product">
@@ -283,7 +290,8 @@
             </a>
             <div class="parent-add">
                 <a class="add" href="#" data-id="108" data-img="img/product_8.jpg" data-name="Mango People"
-                   data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-price="52.00">Add to Cart</a>
+                   data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-color="red" data-size="XXL" data-shipping="FREE"
+                   data-price="52.00">Add to Cart</a>
             </div>
         </section>
         <div class="all-product">
@@ -413,7 +421,7 @@
 <script>
     $(document).ready(() => {
         // noinspection JSUnusedLocalSymbols
-        let cart = new Cart('json/getHeadCart.json', '.cart-drop-box-wrapper');
+        let cart = new Cart('json/getCart.json', '.cart-drop-box-wrapper');
         $('.item-product').on('click', '.add', e => {
             e.preventDefault();
             cart.addProduct(e.currentTarget);

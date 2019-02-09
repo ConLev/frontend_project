@@ -204,39 +204,55 @@
     <h3 class="like-also-header">you may like also</h3>
     <div class="like-also container">
         <section class="like-also-product">
-            <a href="#" class="like-also-product-1" data-id="301" data-img="img/also-product-img_1.jpg"
-               data-name="BLAZE LEGGINGS" data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-price="52.00"></a>
+            <a href="#" class="like-also-product-1"></a>
             <div class="like-also-product-box">
                 <p class="like-also-product-name">BLAZE LEGGINGS</p>
                 <span class="like-also-product-price">$52.00</span>
                 <span class="like-also-product-comment">&#9734;&#9734;&#9734;&#9734;&#9734;</span>
             </div>
+            <div class="like-also-product-parent">
+                <a class="like-also-product-parent-add" href="#" data-id="301" data-img="img/also-product-img_1.jpg"
+                   data-name="BLAZE LEGGINGS" data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-color="red"
+                   data-size="XXL" data-shipping="FREE" data-price="52.00">Add to Cart</a>
+            </div>
         </section>
         <section class="like-also-product">
-            <a href="#" class="like-also-product-2" data-id="302" data-img="img/also-product-img_2.jpg"
-               data-name="ALEXA SWEATER" data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-price="52.00"></a>
+            <a href="#" class="like-also-product-2"></a>
             <div class="like-also-product-box">
                 <p class="like-also-product-name">ALEXA SWEATER</p>
                 <span class="like-also-product-price">$52.00</span>
                 <span class="like-also-product-comment">&#9734;&#9734;&#9734;&#9734;&#9734;</span>
             </div>
+            <div class="like-also-product-parent">
+                <a class="like-also-product-parent-add" href="#" data-id="302" data-img="img/also-product-img_2.jpg"
+                   data-name="ALEXA SWEATER" data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-color="red"
+                   data-size="XXL" data-shipping="FREE" data-price="52.00">Add to Cart</a>
+            </div>
         </section>
         <section class="like-also-product">
-            <a href="#" class="like-also-product-3" data-id="303" data-img="img/also-product-img_3.jpg"
-               data-name="AGNES TOP" data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-price="52.00"></a>
+            <a href="#" class="like-also-product-3"></a>
             <div class="like-also-product-box">
                 <p class="like-also-product-name">AGNES TOP</p>
                 <span class="like-also-product-price">$52.00</span>
                 <span class="like-also-product-comment">&#9734;&#9734;&#9734;&#9734;&#9734;</span>
             </div>
+            <div class="like-also-product-parent">
+                <a class="like-also-product-parent-add" href="#" data-id="303" data-img="img/also-product-img_3.jpg"
+                   data-name="AGNES TOP" data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-color="red"
+                   data-size="XXL" data-shipping="FREE" data-price="52.00">Add to Cart</a>
+            </div>
         </section>
         <section class="like-also-product">
-            <a href="#" class="like-also-product-4" data-id="304" data-img="img/also-product-img_4.jpg"
-               data-name="SYLVA SWEATER" data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-price="52.00"></a>
+            <a href="#" class="like-also-product-4"></a>
             <div class="like-also-product-box">
                 <p class="like-also-product-name">SYLVA SWEATER</p>
                 <span class="like-also-product-price">$52.00</span>
                 <span class="like-also-product-comment">&#9734;&#9734;&#9734;&#9734;&#9734;</span>
+            </div>
+            <div class="like-also-product-parent">
+                <a class="like-also-product-parent-add" href="#" data-id="304" data-img="img/also-product-img_4.jpg"
+                   data-name="SYLVA SWEATER" data-rating=&#9734;&#9734;&#9734;&#9734;&#9734; data-color="red"
+                   data-size="XXL" data-shipping="FREE" data-price="52.00">Add to Cart</a>
             </div>
         </section>
     </div>
@@ -335,12 +351,11 @@
 <script>
     $(document).ready(() => {
         // noinspection JSUnusedLocalSymbols
-        let cart = new Cart('json/getHeadCart.json', '.cart-drop-box-wrapper');
-        //$('.like-also').on('click', 'a', e => {
-        //e.preventDefault();
-        //cart.addProduct(e.currentTarget);
-        //console.log(e.currentTarget);
-        //});
+        let cart = new Cart('json/getCart.json', '.cart-drop-box-wrapper');
+        $('.like-also').on('click', '.like-also-product-parent-add', e => {
+            e.preventDefault();
+            cart.addProduct(e.currentTarget);
+        });
         $('.owl-carousel').owlCarousel({
             loop: true,
             //margin: 10,

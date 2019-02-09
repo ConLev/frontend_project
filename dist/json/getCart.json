@@ -1,15 +1,36 @@
 {
-  "cartId": 777,
-  "countGoods": 5,
-  "amount": 600,
+  "countGoods": 10,
+  "amount": 1850.00,
   "items": [
+    {
+      "id_product": 200,
+      "product_img": "img/cart-drop-product_1.jpg",
+      "product_name": "Rebox Zane",
+      "product_rating": "&#9734;&#9734;&#9734;&#9734;&#9734;",
+      "product_color": "red",
+      "product_size": "XXL",
+      "product_shipping": "FREE",
+      "price": 250,
+      "quantity": 3
+    },
+    {
+      "id_product": 300,
+      "product_img": "img/cart-drop-product_2.jpg",
+      "product_name": "Rebox Zane",
+      "product_rating": "&#9734;&#9734;&#9734;&#9734;&#9734;",
+      "product_color": "red",
+      "product_size": "XXL",
+      "product_shipping": "FREE",
+      "price": 250,
+      "quantity": 2
+    },
     {
       "id_product": 123,
       "product_img": "img/shopping-cart-product_1.jpg",
-      "product_name": "Mango People T-shirt",
+      "product_name": "Mango People",
       "product_rating": "&#9734;&#9734;&#9734;&#9734;&#9734;",
       "product_color": "red",
-      "product_size": "Xll",
+      "product_size": "XXL",
       "product_shipping": "FREE",
       "price": 150,
       "quantity": 1
@@ -17,10 +38,10 @@
     {
       "id_product": 456,
       "product_img": "img/shopping-cart-product_2.jpg",
-      "product_name": "Mango People T-shirt",
+      "product_name": "Mango People",
       "product_rating": "&#9734;&#9734;&#9734;&#9734;&#9734;",
       "product_color": "red",
-      "product_size": "Xll",
+      "product_size": "XXL",
       "product_shipping": "FREE",
       "price": 100,
       "quantity": 2
@@ -28,10 +49,10 @@
     {
       "id_product": 789,
       "product_img": "img/shopping-cart-product_3.jpg",
-      "product_name": "Mango People T-shirt",
+      "product_name": "Mango People",
       "product_rating": "&#9734;&#9734;&#9734;&#9734;&#9734;",
       "product_color": "red",
-      "product_size": "Xll",
+      "product_size": "XXL",
       "product_shipping": "FREE",
       "price": 125,
       "quantity": 2

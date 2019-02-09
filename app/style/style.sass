@@ -635,6 +635,11 @@ select::-ms-expand
   &:hover
     box-shadow: 0 0 8px #fff
 
+  &:active
+    border: 1px solid #ef5b70
+    box-shadow: 0 0 8px #ef5b70
+    color: #ef5b70
+
 .product-img
   width: 100%
 
@@ -1111,11 +1116,44 @@ select::-ms-expand
 
   &-product
     display: grid
+    position: relative
 
     &:hover
+      .like-also-product-parent
+        display: flex
+
       img
         filter: brightness(50%)
       box-shadow: 0 5px 8px rgba(0, 0, 0, 0.16)
+
+    &-parent
+      position: absolute
+      top: 115px
+      display: none
+      justify-content: center
+      width: 263px
+
+      &-add
+        width: 123px
+        height: 39px
+        box-sizing: border-box
+        border: 1px solid #ef5b70
+        display: block
+        padding-left: 40px
+        font-size: 13px
+        color: #ef5b70
+        font-weight: 700
+        text-decoration: none
+        line-height: 37px
+        background: url(../img/add-to-cart.svg) no-repeat 10px 7px
+
+        &:hover
+          box-shadow: 0 0 8px #ef5b70
+
+        &:active
+          border: 1px solid #ffffff
+          box-shadow: 0 0 8px #ffffff
+          color: #ffffff
 
     &-1
       width: 260px
@@ -1208,6 +1246,10 @@ select::-ms-expand
   display: grid
   grid-template-columns: 1fr 4fr 1fr 1fr 1fr 1fr 1fr
   border-bottom: 1px solid #eaeaea
+
+.product-box-img
+  width: 100px
+  height: 115px
 
 .product-details-box_parameter
   margin: 12px 0 0 20px
@@ -1967,6 +2009,11 @@ select::-ms-expand
 
   &:hover
     box-shadow: 0 0 8px #fff
+
+  &:active
+    border: 1px solid #ef5b70
+    box-shadow: 0 0 8px #ef5b70
+    color: #ef5b70
 
 .item-add_link_bottom
   width: 27px

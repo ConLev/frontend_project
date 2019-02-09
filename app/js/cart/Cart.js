@@ -2,7 +2,6 @@ class Cart {
     constructor(source, container) {
         this.source = source;
         this.container = container;
-        this.cartId = 0; // Идентификатор корзины
         this.countGoods = 0; // Общее кол-во товаров в корзине
         this.amount = 0; // Общая стоимость товаров в корзине
         this.cartItems = []; // Все товары
@@ -10,19 +9,35 @@ class Cart {
     }
 
     _init() {
-        this._render();
-        fetch(this.source)
-            .then(result => result.json())
-            .then(data => {
-                for (let product of data.items) {
-                    this.cartItems.push(product);
-                    this._renderItem(product);
-                }
-                this.cartId = data.cartId;
-                this.countGoods = data.countGoods;
-                this.amount = data.amount;
-                this._renderSum();
-            })
+        if (!localStorage.getItem('userCart')) {
+            this._render();
+            fetch(this.source)
+                .then(result => result.json())
+                .then(data => {
+                    for (let product of data.items) {
+                        this.cartItems.push(product);
+                        this._renderItem(product);
+                    }
+                    this.countGoods = data.countGoods;
+                    this.amount = data.amount;
+                    localStorage.setItem('userCart', JSON.stringify(this.cartItems));
+                    localStorage.setItem('amount', JSON.stringify(this.amount));
+                    localStorage.setItem('countGoods', JSON.stringify(this.countGoods));
+                    this._renderSum();
+                })
+        } else if (localStorage.getItem('amount') === '0') {
+            $('.shopping-cart_container').empty();
+            this._renderSum();
+        } else {
+            this._render();
+            this.cartItems = JSON.parse(localStorage.getItem('userCart'));
+            for (let product of this.cartItems) {
+                this._renderItem(product);
+            }
+            this.amount = JSON.parse(localStorage.getItem('amount'));
+            this.countGoods = JSON.parse(localStorage.getItem('countGoods'));
+            this._renderSum();
+        }
     }
 
     _render() {
@@ -46,6 +61,9 @@ class Cart {
             this.cartItems = [];
             $('.header-cart-count_goods').text('0');
             $('.shopping-cart_container').empty();
+            localStorage.setItem('userCart', JSON.stringify(this.cartItems));
+            localStorage.setItem('amount', '0');
+            localStorage.setItem('countGoods', '0');
         });
         $shoppingCartButton.append($remBtn);
         $shoppingCartButton.append($(`<button class="shopping-cart-button_continue">CONTINUE SHOPPING</button>`));
@@ -60,7 +78,7 @@ class Cart {
             'data-product': product.id_product
         });
         // noinspection JSUnresolvedVariable
-        $container.append($(`<img src="${product.product_img}" alt="product_photo">`));
+        $container.append($(`<img src="${product.product_img}" class="product-box-img" alt="product_photo">`));
         let $detailsBox = $(`<div/>`, {
             class: 'product-details-box_parameter'
         });
@@ -152,6 +170,9 @@ class Cart {
             this.amount -= find.price;
             this._updateCart(find);
         }
+        localStorage.setItem('userCart', JSON.stringify(this.cartItems));
+        localStorage.setItem('amount', JSON.stringify(this.amount));
+        localStorage.setItem('countGoods', JSON.stringify(this.countGoods));
         this._renderSum();
     }
 
@@ -161,6 +182,9 @@ class Cart {
         $(`div[data-product="${id}"]`).remove();
         this.amount -= find.price * find.quantity;
         this.countGoods -= find.quantity;
+        localStorage.setItem('userCart', JSON.stringify(this.cartItems));
+        localStorage.setItem('amount', JSON.stringify(this.amount));
+        localStorage.setItem('countGoods', JSON.stringify(this.countGoods));
         this._renderSum();
     }
 }

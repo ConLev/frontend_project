@@ -9,17 +9,30 @@ class Cart {
     }
 
     _init() {
-        fetch(this.source)
-            .then(result => result.json())
-            .then(data => {
-                for (let product of data.contents) {
-                    this.cartItems.push(product);
-                    this._renderItem(product);
-                }
-                this.countGoods = data.countGoods;
-                this.amount = data.amount;
-                this._renderSum();
-            })
+        if (!localStorage.getItem('userCart')) {
+            fetch(this.source)
+                .then(result => result.json())
+                .then(data => {
+                    for (let product of data.items) {
+                        this.cartItems.push(product);
+                        this._renderItem(product);
+                    }
+                    this.countGoods = data.countGoods;
+                    this.amount = data.amount;
+                    localStorage.setItem('userCart', JSON.stringify(this.cartItems));
+                    localStorage.setItem('amount', JSON.stringify(this.amount));
+                    localStorage.setItem('countGoods', JSON.stringify(this.countGoods));
+                    this._renderSum();
+                })
+        } else {
+            this.cartItems = JSON.parse(localStorage.getItem('userCart'));
+            for (let product of this.cartItems) {
+                this._renderItem(product);
+            }
+            this.amount = JSON.parse(localStorage.getItem('amount'));
+            this.countGoods = JSON.parse(localStorage.getItem('countGoods'));
+            this._renderSum();
+        }
     }
 
     _renderItem(product) {
@@ -72,6 +85,9 @@ class Cart {
                 product_img: $(element).data('img'),
                 product_name: $(element).data('name'),
                 product_rating: $(element).data('rating'),
+                product_color: $(element).data('color'),
+                product_size: $(element).data('size'),
+                product_shipping: $(element).data('shipping'),
                 price: +$(element).data('price'),
                 quantity: 1
             };
@@ -81,6 +97,9 @@ class Cart {
             this.amount += product.price;
             this.countGoods += product.quantity;
         }
+        localStorage.setItem('userCart', JSON.stringify(this.cartItems));
+        localStorage.setItem('amount', JSON.stringify(this.amount));
+        localStorage.setItem('countGoods', JSON.stringify(this.countGoods));
         this._renderSum();
     }
 
@@ -90,7 +109,9 @@ class Cart {
         $(`div[data-product="${id}"]`).remove();
         this.amount -= find.price * find.quantity;
         this.countGoods -= find.quantity;
+        localStorage.setItem('userCart', JSON.stringify(this.cartItems));
+        localStorage.setItem('amount', JSON.stringify(this.amount));
+        localStorage.setItem('countGoods', JSON.stringify(this.countGoods));
         this._renderSum();
-        console.log(this.cartItems);
     }
 }

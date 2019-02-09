@@ -14,8 +14,6 @@ function () {
 
     this.source = source;
     this.container = container;
-    this.cartId = 0; // Идентификатор корзины
-
     this.countGoods = 0; // Общее кол-во товаров в корзине
 
     this.amount = 0; // Общая стоимость товаров в корзине
@@ -30,44 +28,85 @@ function () {
     value: function _init() {
       var _this = this;
 
-      this._render();
+      if (!localStorage.getItem('userCart')) {
+        this._render();
 
-      fetch(this.source).then(function (result) {
-        return result.json();
-      }).then(function (data) {
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
+        fetch(this.source).then(function (result) {
+          return result.json();
+        }).then(function (data) {
+          var _iteratorNormalCompletion = true;
+          var _didIteratorError = false;
+          var _iteratorError = undefined;
+
+          try {
+            for (var _iterator = data.items[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+              var product = _step.value;
+
+              _this.cartItems.push(product);
+
+              _this._renderItem(product);
+            }
+          } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion && _iterator.return != null) {
+                _iterator.return();
+              }
+            } finally {
+              if (_didIteratorError) {
+                throw _iteratorError;
+              }
+            }
+          }
+
+          _this.countGoods = data.countGoods;
+          _this.amount = data.amount;
+          localStorage.setItem('userCart', JSON.stringify(_this.cartItems));
+          localStorage.setItem('amount', JSON.stringify(_this.amount));
+          localStorage.setItem('countGoods', JSON.stringify(_this.countGoods));
+
+          _this._renderSum();
+        });
+      } else if (localStorage.getItem('amount') === '0') {
+        $('.shopping-cart_container').empty();
+
+        this._renderSum();
+      } else {
+        this._render();
+
+        this.cartItems = JSON.parse(localStorage.getItem('userCart'));
+        var _iteratorNormalCompletion2 = true;
+        var _didIteratorError2 = false;
+        var _iteratorError2 = undefined;
 
         try {
-          for (var _iterator = data.items[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var product = _step.value;
+          for (var _iterator2 = this.cartItems[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var product = _step2.value;
 
-            _this.cartItems.push(product);
-
-            _this._renderItem(product);
+            this._renderItem(product);
           }
         } catch (err) {
-          _didIteratorError = true;
-          _iteratorError = err;
+          _didIteratorError2 = true;
+          _iteratorError2 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion && _iterator.return != null) {
-              _iterator.return();
+            if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+              _iterator2.return();
             }
           } finally {
-            if (_didIteratorError) {
-              throw _iteratorError;
+            if (_didIteratorError2) {
+              throw _iteratorError2;
             }
           }
         }
 
-        _this.cartId = data.cartId;
-        _this.countGoods = data.countGoods;
-        _this.amount = data.amount;
+        this.amount = JSON.parse(localStorage.getItem('amount'));
+        this.countGoods = JSON.parse(localStorage.getItem('countGoods'));
 
-        _this._renderSum();
-      });
+        this._renderSum();
+      }
     }
   }, {
     key: "_render",
@@ -94,6 +133,9 @@ function () {
         _this2.cartItems = [];
         $('.header-cart-count_goods').text('0');
         $('.shopping-cart_container').empty();
+        localStorage.setItem('userCart', JSON.stringify(_this2.cartItems));
+        localStorage.setItem('amount', '0');
+        localStorage.setItem('countGoods', '0');
       });
       $shoppingCartButton.append($remBtn);
       $shoppingCartButton.append($("<button class=\"shopping-cart-button_continue\">CONTINUE SHOPPING</button>"));
@@ -111,7 +153,7 @@ function () {
         'data-product': product.id_product
       }); // noinspection JSUnresolvedVariable
 
-      $container.append($("<img src=\"".concat(product.product_img, "\" alt=\"product_photo\">")));
+      $container.append($("<img src=\"".concat(product.product_img, "\" class=\"product-box-img\" alt=\"product_photo\">")));
       var $detailsBox = $("<div/>", {
         class: 'product-details-box_parameter'
       });
@@ -212,6 +254,10 @@ function () {
         this._updateCart(find);
       }
 
+      localStorage.setItem('userCart', JSON.stringify(this.cartItems));
+      localStorage.setItem('amount', JSON.stringify(this.amount));
+      localStorage.setItem('countGoods', JSON.stringify(this.countGoods));
+
       this._renderSum();
     }
   }, {
@@ -224,6 +270,9 @@ function () {
       $("div[data-product=\"".concat(id, "\"]")).remove();
       this.amount -= find.price * find.quantity;
       this.countGoods -= find.quantity;
+      localStorage.setItem('userCart', JSON.stringify(this.cartItems));
+      localStorage.setItem('amount', JSON.stringify(this.amount));
+      localStorage.setItem('countGoods', JSON.stringify(this.countGoods));
 
       this._renderSum();
     }
